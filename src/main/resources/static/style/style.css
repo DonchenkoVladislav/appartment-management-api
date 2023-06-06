@@ -1,0 +1,142 @@
+:root {
+    --primary-border-radius: 10px;
+    --primary-border-solid: none;
+    --primary-paddings: 10px;
+    --primary-margin-top: 3vh;
+    --primary-margin-top-small: 10px;
+    --primary-max-width: 40vw;
+    --primary-input-width: 10vw;
+    --primary-button-background-color: #4d4d4d;
+    --primary-block-background-color: #c4c4c4;
+    --primary-negative-text-color: aliceblue;
+    --primary-text-color: #878787;
+    --primary-font-family: 'Montserrat', sans-serif;
+    --primary-block-backgroung: #fafafa;
+    --font-size-large: large;
+}
+h2 {
+    text-align: center;
+    font-family: var(--primary-font-family);
+    color: var(--primary-text-color);
+}
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+.mainColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    width: 80vw;
+}
+.mainMenu {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin-top: var(--primary-margin-top);
+}
+.aButton {
+    padding: var(--primary-paddings);
+    width: 140px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    border-radius: var(--primary-border-radius);
+    background-color: var(--primary-button-background-color);
+    color: var(--primary-negative-text-color);
+    font-family: var(--primary-font-family);
+}
+.flexRowEditor {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin-top: var(--primary-margin-top);
+}
+.editor {
+    display: block;
+    width: 100%;
+    margin: 0 0.5vw;
+}
+.description {
+    max-width: var(--primary-max-width);
+}
+.descriptionElement {
+    margin-top: var(--primary-margin-top-small);
+    display: inline-block;
+    border: var(--primary-border-solid);
+    border-radius: var(--primary-border-radius);
+    padding: var(--primary-paddings);
+    min-width: var(--primary-max-width);
+    border-color: var(--primary-text-color);
+    background: var(--primary-block-backgroung);
+}
+.descriptionElementParam {
+    margin-top: var(--primary-margin-top-small);
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    border: var(--primary-border-solid);
+    border-radius: var(--primary-border-radius);
+    padding: var(--primary-paddings);
+    min-width: var(--primary-max-width);
+    border-color: var(--primary-text-color);
+    background: var(--primary-block-backgroung);
+}
+.flexParamInput {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.flexParamInputStart {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+.text {
+    margin: 3px;
+    font-family: var(--primary-font-family);
+    color: var(--primary-text-color);
+}
+div.paramInput input {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    width: 100%;
+    text-align: center;
+    font-size: xx-large;
+    outline: none;
+    font-family: var(--primary-font-family);
+    background: var(--primary-block-backgroung);
+}
+div.paramInput textarea {
+    margin-top: var(--primary-margin-top);
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    width: 100%;
+    max-width: 38vw; /*Не знаю почему тут надо 38, а не 40*/
+    outline: none;
+    font-family: var(--primary-font-family);
+    background: var(--primary-block-backgroung);
+}
+div.paramInput select {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    text-align: center;
+    font-size: var(--font-size-large);
+    outline: none;
+    font-family: var(--primary-font-family);
+    background: var(--primary-block-backgroung);
+}
+#coordinates {
+    font-size: var(--font-size-large);
+}
+.paramInput {
+    max-width: var(--primary-max-width);
+    border-radius: var(--primary-border-radius);
+    padding: var(--primary-paddings);
+}

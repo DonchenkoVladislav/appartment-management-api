@@ -1,8 +1,136 @@
 <!DOCTYPE HTML>
 <head>
     <title>Добавление объекта</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/imageDownloader.css">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-    <p>Привет!</p>
+    <div class="mainColumn">
+        <div class="mainMenu">
+            <a class="aButton" href="">Добавить объект</a>
+            <a class="aButton" href="">Все объекты</a>
+            <a class="aButton" href="">Бронирование</a>
+        </div>
+        <!--Левая часть с описанием объекта-->
+        <div class="flexRowEditor">
+            <div class="editor">
+                <h2>Описание объекта</h2>
+
+                <!--Город, координаты-->
+                <div class="descriptionElementParam">
+                    <!--Город-->
+                    <div class="paramInput">
+                            <span class="flexParamInput">
+                                <img width="24" height="24" class="icon" src="icons/sity.svg" alt="icon">
+                                <p class="text">Город</p>
+                            </span>
+                        <select name="input_space" class="niceInput">
+                            <option>Зеленоградск</option>
+                            <option>Калининград</option>
+                            <option>Светлогорск</option>
+                            <option>Пионерский</option>
+                            <option>Янтарный</option>
+                        </select>
+<!--                        <input type="" class="niceInput" name="input_space" preloader="">-->
+                    </div>
+                    <!--Координаты-->
+                    <div class="paramInput">
+                            <span class="flexParamInput">
+                                <img width="24" height="24" class="icon" src="icons/map.svg" alt="icon">
+                                <p class="text">Координаты</p>
+                            </span>
+                        <input type="text" class="niceInput" id="coordinates" name="input_adult" preloader="">
+                    </div>
+                </div>
+                <div class="description">
+                    <!--Прикрепить фотографии-->
+                    <div class="descriptionElement">
+                        <label class="input-file">
+                            <input type="file" name="input_photos" multiple accept="image/*">
+                            <span>
+                                <img class="icon" src="icons/clip.svg" alt="icon">
+                                <p>Прикрепить фотографии</p>
+                            </span>
+                        </label>
+                        <div class="input-file-list"></div>
+                    </div>
+                    <!--Описание объекта-->
+                    <div class="descriptionElement">
+                        <!--Описание-->
+                        <div class="paramInput">
+                            <span class="flexParamInputStart">
+                                <img width="24" height="24" class="icon" src="icons/apartment.svg" alt="icon">
+                                <p class="text">Описание объекта</p>
+                            </span>
+                            <textarea rows="10" cols="45" name="input_description"></textarea>
+                        </div>
+                    </div>
+                    <!--Вид из окна--->
+                    <div class="descriptionElement">
+                        <!--Вид из окна-->
+                        <div class="paramInput">
+                            <span class="flexParamInputStart">
+                                <img width="24" height="24" class="icon" src="icons/binoculars.svg" alt="icon">
+                                <p class="text">Вид из окна</p>
+                            </span>
+                            <textarea rows="1" cols="45" name="input_window"></textarea>
+                        </div>
+                    </div>
+                    <!--Площадь, взрослые, дети-->
+                    <div class="descriptionElementParam">
+                        <!--Площадь квартиры-->
+                        <div class="paramInput">
+                            <span class="flexParamInput">
+                                <img width="24" height="24" class="icon" src="icons/space.svg" alt="icon">
+                                <p class="text">Площадь, м²</p>
+                            </span>
+                            <input type="text" class="niceInput" name="input_space" preloader="">
+                        </div>
+                        <!--Взрослых-->
+                        <div class="paramInput">
+                            <span class="flexParamInput">
+                                <img width="24" height="24" class="icon" src="icons/person.svg" alt="icon">
+                                <p class="text">Взрослых</p>
+                            </span>
+                            <input type="number" class="niceInput" name="input_adult" preloader="">
+                        </div>
+                        <!--Детей-->
+                        <div class="paramInput">
+                            <span class="flexParamInput">
+                                <img width="24" height="24" class="icon" src="icons/person.svg" alt="icon">
+                                <p class="text">Детей</p>
+                            </span>
+                            <input type="number" class="niceInput" name="input_children" preloader="">
+                        </div>
+                    </div>
+                    <!--Кровать, сдается от-->
+                    <div class="descriptionElementParam">
+                        <!--Кровать-->
+                        <div class="paramInput">
+                            <span class="flexParamInput">
+                                <img width="24" height="24" class="icon" src="icons/bed.svg" alt="icon">
+                                <p class="text">Кровать</p>
+                            </span>
+                            <input type="text" class="niceInput" name="input_space" preloader="">
+                        </div>
+                        <!--Сдается от-->
+                        <div class="paramInput">
+                            <span class="flexParamInput">
+                                <img width="24" height="24" class="icon" src="icons/clock.svg" alt="icon">
+                                <p class="text">Сдается от, дней</p>
+                            </span>
+                            <input type="number" class="niceInput" name="input_adult" preloader="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="editor">
+                <h2>Тарифы</h2>
+
+            </div>
+        </div>
+    </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script type="text/javascript" src="/scripts/imageDownloader.js"></script>
