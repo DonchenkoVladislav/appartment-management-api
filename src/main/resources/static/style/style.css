@@ -8,7 +8,7 @@
     --primary-input-width: 10vw;
     --primary-button-background-color: #4d4d4d;
     --primary-block-background-color: #c4c4c4;
-    --primary-negative-text-color: aliceblue;
+    --primary-negative-text-color: #f3f3f3;
     --primary-text-color: #878787;
     --primary-font-family: 'Montserrat', sans-serif;
     --primary-block-backgroung: #fafafa;
@@ -31,22 +31,29 @@ body {
     background-color: white;
     width: 80vw;
 }
-.mainMenu {
-    width: 100%;
+.mainMenu .flexParamInput {
+    width: var(--primary-max-width);
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
+    padding: var(--primary-paddings);
     margin-top: var(--primary-margin-top);
+    border-radius: var(--primary-border-radius);
+    background-color: var(--primary-button-background-color);
+}
+.mainMenu {
+    justify-content: center;
+    display: flex;
 }
 .aButton {
-    padding: var(--primary-paddings);
     width: 140px;
     display: block;
     text-align: center;
     text-decoration: none;
+    padding: var(--primary-paddings);
     border-radius: var(--primary-border-radius);
-    background-color: var(--primary-button-background-color);
-    color: var(--primary-negative-text-color);
+    background-color: var(--primary-negative-text-color);
+    color: var(--primary-text-color);
     font-family: var(--primary-font-family);
 }
 .flexRowEditor {
@@ -73,7 +80,7 @@ body {
     border-color: var(--primary-text-color);
     background: var(--primary-block-backgroung);
 }
-.descriptionElementParam {
+.descriptionElements {
     margin-top: var(--primary-margin-top-small);
     display: flex;
     justify-content: space-evenly;
@@ -132,11 +139,16 @@ div.paramInput select {
     font-family: var(--primary-font-family);
     background: var(--primary-block-backgroung);
 }
-#coordinates {
+#smallInputFont1, #smallInputFont2, #smallInputFont3, #smallInputFont4, #smallInputFont5 {
     font-size: var(--font-size-large);
+    text-align: start;
 }
 .paramInput {
     max-width: var(--primary-max-width);
     border-radius: var(--primary-border-radius);
     padding: var(--primary-paddings);
+}
+.spacer {
+    display: block;
+    height: 5vmin;
 }

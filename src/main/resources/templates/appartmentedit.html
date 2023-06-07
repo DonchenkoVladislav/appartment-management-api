@@ -7,25 +7,35 @@
 </head>
 <body>
     <div class="mainColumn">
+
         <div class="mainMenu">
-            <a class="aButton" href="">Добавить объект</a>
-            <a class="aButton" href="">Все объекты</a>
-            <a class="aButton" href="">Бронирование</a>
+            <div class="flexParamInput">
+                <a class="aButton" href="">Добавить объект</a>
+                <a class="aButton" href="">Все объекты</a>
+                <a class="aButton" href="">Бронирование</a>
+            </div>
         </div>
-        <!--Левая часть с описанием объекта-->
+
         <div class="flexRowEditor">
             <div class="editor">
                 <h2>Описание объекта</h2>
-
                 <!--Город, координаты-->
-                <div class="descriptionElementParam">
+                <div class="descriptionElements">
+                    <!--Название-->
+                    <div class="paramInput">
+                            <span class="flexParamInputStart">
+                                <img width="24" height="24" class="icon" src="icons/pen.svg" alt="icon">
+                                <p class="text">Название</p>
+                            </span>
+                        <input type="text" class="niceInput" id="smallInputFont1" name="input_space" preloader="">
+                    </div>
                     <!--Город-->
                     <div class="paramInput">
                             <span class="flexParamInput">
                                 <img width="24" height="24" class="icon" src="icons/sity.svg" alt="icon">
                                 <p class="text">Город</p>
                             </span>
-                        <select name="input_space" class="niceInput">
+                        <select name="input_city" class="niceInput">
                             <option>Зеленоградск</option>
                             <option>Калининград</option>
                             <option>Светлогорск</option>
@@ -40,7 +50,7 @@
                                 <img width="24" height="24" class="icon" src="icons/map.svg" alt="icon">
                                 <p class="text">Координаты</p>
                             </span>
-                        <input type="text" class="niceInput" id="coordinates" name="input_adult" preloader="">
+                        <input type="text" class="niceInput" id="smallInputFont2" name="input_coordinates" preloader="">
                     </div>
                 </div>
                 <div class="description">
@@ -55,30 +65,8 @@
                         </label>
                         <div class="input-file-list"></div>
                     </div>
-                    <!--Описание объекта-->
-                    <div class="descriptionElement">
-                        <!--Описание-->
-                        <div class="paramInput">
-                            <span class="flexParamInputStart">
-                                <img width="24" height="24" class="icon" src="icons/apartment.svg" alt="icon">
-                                <p class="text">Описание объекта</p>
-                            </span>
-                            <textarea rows="10" cols="45" name="input_description"></textarea>
-                        </div>
-                    </div>
-                    <!--Вид из окна--->
-                    <div class="descriptionElement">
-                        <!--Вид из окна-->
-                        <div class="paramInput">
-                            <span class="flexParamInputStart">
-                                <img width="24" height="24" class="icon" src="icons/binoculars.svg" alt="icon">
-                                <p class="text">Вид из окна</p>
-                            </span>
-                            <textarea rows="1" cols="45" name="input_window"></textarea>
-                        </div>
-                    </div>
                     <!--Площадь, взрослые, дети-->
-                    <div class="descriptionElementParam">
+                    <div class="descriptionElements">
                         <!--Площадь квартиры-->
                         <div class="paramInput">
                             <span class="flexParamInput">
@@ -105,7 +93,7 @@
                         </div>
                     </div>
                     <!--Кровать, сдается от-->
-                    <div class="descriptionElementParam">
+                    <div class="descriptionElements">
                         <!--Кровать-->
                         <div class="paramInput">
                             <span class="flexParamInput">
@@ -123,6 +111,44 @@
                             <input type="number" class="niceInput" name="input_adult" preloader="">
                         </div>
                     </div>
+                    <!--Описание объекта-->
+                    <div class="descriptionElement">
+                        <!--Описание-->
+                        <div class="paramInput">
+                            <span class="flexParamInputStart">
+                                <img width="24" height="24" class="icon" src="icons/apartment.svg" alt="icon">
+                                <p class="text">Описание объекта</p>
+                            </span>
+                            <textarea rows="10" cols="45" name="input_description"></textarea>
+                        </div>
+                    </div>
+                    <!--Вид из окна, удовства, услуги--->
+                    <div class="descriptionElement">
+                        <!--Вид из окна-->
+                        <div class="paramInput">
+                            <span class="flexParamInputStart">
+                                <img width="24" height="24" class="icon" src="icons/binoculars.svg" alt="icon">
+                                <p class="text">Вид из окна</p>
+                            </span>
+                            <input type="text" class="niceInput" id="smallInputFont3" name="input_space" preloader="">
+                        </div>
+                        <!--Удобства-->
+                        <div class="paramInput">
+                            <span class="flexParamInputStart">
+                                <img width="24" height="24" class="icon" src="icons/tea.svg" alt="icon">
+                                <p class="text">Удобства (через запятую)</p>
+                            </span>
+                            <input type="text" class="niceInput" id="smallInputFont4" name="input_space" preloader="">
+                        </div>
+                        <!--Услуги-->
+                        <div class="paramInput">
+                            <span class="flexParamInputStart">
+                                <img width="24" height="24" class="icon" src="icons/car.svg" alt="icon">
+                                <p class="text">Услуги (через запятую)</p>
+                            </span>
+                            <input type="text" class="niceInput" id="smallInputFont5" name="input_space" preloader="">
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="editor">
@@ -130,6 +156,7 @@
 
             </div>
         </div>
+        <div class="spacer"></div>
     </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>

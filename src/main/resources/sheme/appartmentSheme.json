@@ -1,0 +1,28 @@
+{
+  "appartmentDescription": {
+    "description": "String",
+    "viewWindow": "String",
+    "beds": [
+      "String"
+    ]
+  },
+  "shortDescription": {
+    "name": "String",
+    "city": "String",
+    "coordinats": "String",
+    "space": "Integer",
+    "adult": "Integer",
+    "children": "Integer",
+    "rentFrom": "Integer",
+  },
+  "photos": [
+    "Хз что за тип"
+  ],
+  "tariffs": [
+    {
+      "startDate": "String",
+      "endDate": "String",
+      "summary": "Integet"
+    }
+  ]
+}
