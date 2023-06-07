@@ -12,7 +12,7 @@
     --primary-negative-text-color: #f3f3f3;
     --primary-text-color: #878787;
     --primary-font-family: 'Montserrat', sans-serif;
-    --primary-block-backgroung: #fafafa;
+    --primary-block-backgroung: #f5f5f5;
     --font-size-large: large;
     --font-size-xx-large: xx-large;
 }
@@ -42,10 +42,7 @@ body {
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
-    padding: var(--primary-paddings);
     margin-top: var(--primary-margin-top);
-    border-radius: var(--primary-border-radius);
-    background-color: var(--primary-button-background-color);
 }
 
 .mainMenu {
@@ -60,8 +57,21 @@ body {
     text-decoration: none;
     padding: var(--primary-paddings);
     border-radius: var(--primary-border-radius);
-    background-color: var(--primary-negative-text-color);
-    color: var(--primary-text-color);
+    background-color: var(--primary-button-background-color);
+    color: var(--primary-negative-text-color);
+    font-family: var(--primary-font-family);
+    border: var(--primary-border-none-solid)
+}
+
+.bButton {
+    width: 185px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: var(--primary-paddings);
+    border-radius: var(--primary-border-radius);
+    background-color: var(--primary-button-background-color);
+    color: var(--primary-negative-text-color);
     font-family: var(--primary-font-family);
     border: var(--primary-border-none-solid)
 }
@@ -135,6 +145,10 @@ body {
     margin: 3px;
     font-family: var(--primary-font-family);
     color: var(--primary-text-color);
+}
+
+.flexParamInputEvently .text{
+    color: var(--primary-negative-text-color);
 }
 
 div.paramInput input {

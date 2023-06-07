@@ -130,41 +130,41 @@
                         <textarea rows="10" cols="45" name="input_description"></textarea>
                     </div>
                 </div>
-                <!--Вид из окна, удовства, услуги--->
-                <div class="descriptionElement">
-                    <!--Вид из окна-->
-                    <div class="paramInput">
+            </div>
+        </div>
+        <div class="editor">
+            <!--Вид из окна, удовства, услуги--->
+            <div class="descriptionElement">
+                <!--Вид из окна-->
+                <div class="paramInput">
                             <span class="flexParamInputStart">
                                 <img width="24" height="24" class="icon" src="icons/binoculars.svg" alt="icon">
                                 <p class="text">Вид из окна</p>
                             </span>
-                        <input type="text" class="niceInput" id="smallInputFont3" name="input_space" preloader="">
-                    </div>
-                    <!--Удобства-->
-                    <div class="paramInput">
+                    <input type="text" class="niceInput" id="smallInputFont3" name="input_space" preloader="">
+                </div>
+                <!--Удобства-->
+                <div class="paramInput">
                             <span class="flexParamInputStart">
                                 <img width="24" height="24" class="icon" src="icons/tea.svg" alt="icon">
                                 <p class="text">Удобства (через запятую)</p>
                             </span>
-                        <input type="text" class="niceInput" id="smallInputFont4" name="input_space" preloader="">
-                    </div>
-                    <!--Услуги-->
-                    <div class="paramInput">
+                    <input type="text" class="niceInput" id="smallInputFont4" name="input_space" preloader="">
+                </div>
+                <!--Услуги-->
+                <div class="paramInput">
                             <span class="flexParamInputStart">
                                 <img width="24" height="24" class="icon" src="icons/car.svg" alt="icon">
                                 <p class="text">Услуги (через запятую)</p>
                             </span>
-                        <input type="text" class="niceInput" id="smallInputFont5" name="input_space" preloader="">
-                    </div>
+                    <input type="text" class="niceInput" id="smallInputFont5" name="input_space" preloader="">
                 </div>
             </div>
-        </div>
-        <div class="editor">
             <div class="flexRowEditor">
                 <h2>Тарифы</h2>
             </div>
             <!--Список тарифов-->
-            <div class="container" id="tariffContainer">
+            <div id="tariffContainer">
                 <div draggable="true" class="descriptionElements">
                     <!--Дата начала-->
                     <div class="paramInput">
@@ -194,20 +194,22 @@
                 </div>
             </div>
 
-            <!--Добавить тариф-->
-            <button onclick="createTariff()" type="button" class="aButton">
-                        <span class="flexParamInputCenter">
-                          <img width="24" height="24" class="icon" src="icons/clock.svg" alt="icon">
+            <div class="flexRowEditor">
+                <!--Добавить тариф-->
+                <button onclick="createTariff()" type="button" class="bButton">
+                        <span class="flexParamInputEvently">
+                          <img width="24" height="24" class="icon" src="icons/plus.svg" alt="icon">
                             <p class="text">Добавить тариф</p>
                         </span>
-            </button>
-            <!--Сохранить объект-->
-            <button onclick="" type="submit" class="aButton">
-                        <span class="flexParamInputCenter">
-                            <img width="24" height="24" class="icon" src="icons/clock.svg" alt="icon">
+                </button>
+                <!--Сохранить объект-->
+                <button onclick="" type="submit" class="bButton">
+                        <span class="flexParamInputEvently">
+                            <img width="24" height="24" class="icon" src="icons/save.svg" alt="icon">
                             <p class="text">Сохранить</p>
                         </span>
-            </button>
+                </button>
+            </div>
 
         </div>
     </div>
