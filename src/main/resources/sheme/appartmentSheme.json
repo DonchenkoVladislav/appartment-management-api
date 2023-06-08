@@ -1,28 +1,26 @@
 {
-  "appartmentDescription": {
-    "description": "String",
-    "viewWindow": "String",
-    "beds": [
-      "String"
-    ]
-  },
-  "shortDescription": {
-    "name": "String",
-    "city": "String",
-    "coordinats": "String",
-    "space": "Integer",
-    "adult": "Integer",
-    "children": "Integer",
-    "rentFrom": "Integer"
-  },
-  "photos": [
-    "Хз что за тип"
-  ],
+  "name": "Название",
+  "city": "Зеленоградск",
+  "coordinates": "Координаты",
+  "space": "55",
+  "adult": "2",
+  "children": "2",
+  "beds": "160х200",
+  "from": "3",
+  "summary": "1995",
+  "view": "Вид из окна",
+  "conveniences": "Удобства",
+  "services": "Услуги",
   "tariffs": [
     {
-      "startDate": "String",
-      "endDate": "String",
-      "summary": "Integet"
+      "startDate": "01.01",
+      "endDate": "31.01",
+      "summaryTariff": "2500"
+    },
+    {
+      "startDate": "01.06",
+      "endDate": "01.09",
+      "summaryTariff": "3000"
     }
   ]
 }

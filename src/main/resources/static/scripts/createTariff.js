@@ -1,7 +1,7 @@
 function createTariff() {
     var newTariff = document.createElement('div')
     newTariff.innerHTML =
-        "<div draggable=\"true\" class=\"descriptionElements\">\n" +
+        "<div draggable=\"true\" class=\"descriptionElements tariff\">\n" +
         "                    <!--Дата начала-->\n" +
         "                    <div class=\"paramInput\">\n" +
         "                            <span class=\"flexParamInputCenter\">\n" +

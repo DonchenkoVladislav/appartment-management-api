@@ -1,4 +1,5 @@
 var dt = new DataTransfer();
+var formData = new FormData;
 
 $('.input-file input[type=file]').on('change', function(){
     let $files_list = $(this).closest('.input-file').next();
@@ -6,6 +7,7 @@ $('.input-file input[type=file]').on('change', function(){
 
     for(var i = 0; i < this.files.length; i++){
         let file = this.files.item(i);
+        formData.append('image_' + i, file);
         dt.items.add(file);
 
         let reader = new FileReader();
@@ -21,6 +23,7 @@ $('.input-file input[type=file]').on('change', function(){
     };
     this.files = dt.files;
 });
+
 
 function removeFilesItem(target){
     let name = $(target).prev().text();
