@@ -29,6 +29,11 @@ body {
     justify-content: center;
 }
 
+.generalSeparate {
+    display: flex;
+    flex-direction: row;
+}
+
 .mainColumn {
     display: flex;
     flex-direction: column;
@@ -37,17 +42,18 @@ body {
     width: 80vw;
 }
 
-.mainMenu .flexParamInputCenter {
-    width: var(--primary-max-width);
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-    margin-top: var(--primary-margin-top);
+#menuBlock {
+    background: var(--primary-button-background-color);
+    border-radius: var(--primary-border-radius);
+    margin: var(--primary-margin-top-small);
+    padding: var(--primary-paddings);
+    height: 60vh;
+    position: fixed;
+    vertical-align: center;
 }
 
 .mainMenu {
-    justify-content: center;
-    display: flex;
+    width: 20vw;
 }
 
 .aButton {
