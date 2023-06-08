@@ -1,4 +1,4 @@
-package dto;
+package com.svoi.vkaliningrade.dto;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,10 +12,8 @@ import lombok.Getter;
 @Entity
 public class TariffsInfo {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long apartmentId;
     private String startDate, endDate;
-    private int summaryTariff;
+private int  summaryTariff;
 
 }
