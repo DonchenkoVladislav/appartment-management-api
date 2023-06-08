@@ -21,9 +21,10 @@ public class ApartmentAddController {
     }
 
     @PostMapping("/appartments-add")
-    public void saveApartment(@RequestBody RequestFrontPage requestBody){
+    public String saveApartment(@RequestBody RequestFrontPage requestBody){
         ApartmentDescription description = new ApartmentDescription(requestBody);
         apartmentRepository.save(description);
+        return "apartmentedit";
     }
 
 }
