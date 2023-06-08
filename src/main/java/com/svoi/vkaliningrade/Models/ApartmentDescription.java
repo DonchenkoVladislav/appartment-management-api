@@ -8,14 +8,14 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 
 @Getter
-//@Entity
+@Entity
 public class ApartmentDescription {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String description, view, name, city, coordinates, beds, conveniences, services;
-    private int space, adult, children, from, summary;
+    private int space, adult, children, fromDay, summary;
 
     public ApartmentDescription() {
     }
@@ -29,7 +29,7 @@ public class ApartmentDescription {
         this.space = responseApartment.getSpace();
         this.adult = responseApartment.getAdult();
         this.children = responseApartment.getChildren();
-        this.from = responseApartment.getFrom();
+        this.fromDay = responseApartment.getFrom();
         this.summary = responseApartment.getSummary();
         this.beds = responseApartment.getBeds();
         this.conveniences = responseApartment.getConveniences();
