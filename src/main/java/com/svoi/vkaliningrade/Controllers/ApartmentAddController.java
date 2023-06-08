@@ -15,12 +15,12 @@ public class ApartmentAddController {
     @Autowired
     private ApartmentRepository apartmentRepository;
 
-    @GetMapping("/apartment-add")
+    @GetMapping("/apartments-add")
     public String getApartmentAddPage() {
         return "apartmentedit";
     }
 
-    @PostMapping("/apartment-add")
+    @PostMapping("/apartments-add")
     public void saveApartment(@RequestBody RequestFrontPage requestBody){
         ApartmentDescription description = new ApartmentDescription(requestBody);
         apartmentRepository.save(description);

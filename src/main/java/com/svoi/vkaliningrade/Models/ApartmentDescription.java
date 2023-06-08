@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 
 @Getter
-@Entity
+//@Entity
 public class ApartmentDescription {
 
     @Id
