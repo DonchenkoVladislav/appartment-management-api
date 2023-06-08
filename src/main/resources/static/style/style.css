@@ -1,0 +1,212 @@
+:root {
+    --primary-border-radius: 10px;
+    --primary-border-none-solid: none;
+    --primary-border-solid: solid;
+    --primary-paddings: 10px;
+    --primary-margin-top: 3vh;
+    --primary-margin-top-small: 10px;
+    --primary-max-width: 40vw;
+    --primary-input-width: 10vw;
+    --primary-button-background-color: #4d4d4d;
+    --primary-block-background-color: #c4c4c4;
+    --primary-negative-text-color: #f3f3f3;
+    --primary-text-color: #878787;
+    --primary-font-family: 'Montserrat', sans-serif;
+    --primary-block-backgroung: #f5f5f5;
+    --font-size-large: large;
+    --font-size-xx-large: xx-large;
+}
+
+h2, h3 {
+    text-align: center;
+    font-family: var(--primary-font-family);
+    color: var(--primary-text-color);
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.mainColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    width: 80vw;
+}
+
+.mainMenu .flexParamInputCenter {
+    width: var(--primary-max-width);
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin-top: var(--primary-margin-top);
+}
+
+.mainMenu {
+    justify-content: center;
+    display: flex;
+}
+
+.aButton {
+    width: 140px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: var(--primary-paddings);
+    border-radius: var(--primary-border-radius);
+    background-color: var(--primary-button-background-color);
+    color: var(--primary-negative-text-color);
+    font-family: var(--primary-font-family);
+    border: var(--primary-border-none-solid)
+}
+
+.bButton {
+    width: 185px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: var(--primary-paddings);
+    border-radius: var(--primary-border-radius);
+    background-color: var(--primary-button-background-color);
+    color: var(--primary-negative-text-color);
+    font-family: var(--primary-font-family);
+    border: var(--primary-border-none-solid)
+}
+
+.flexRowEditor {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin-top: var(--primary-margin-top);
+}
+
+.editor {
+    display: block;
+    width: 100%;
+    margin: 0 0.5vw;
+}
+
+.description {
+    max-width: var(--primary-max-width);
+}
+
+.descriptionElement {
+    margin-top: var(--primary-margin-top-small);
+    display: inline-block;
+    border: var(--primary-border-none-solid);
+    border-radius: var(--primary-border-radius);
+    padding: var(--primary-paddings);
+    min-width: var(--primary-max-width);
+    border-color: var(--primary-text-color);
+    background: var(--primary-block-backgroung);
+}
+
+.descriptionElements {
+    margin-top: var(--primary-margin-top-small);
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    border: var(--primary-border-none-solid);
+    border-radius: var(--primary-border-radius);
+    padding: var(--primary-paddings);
+    min-width: var(--primary-max-width);
+    border-color: var(--primary-text-color);
+    background: var(--primary-block-backgroung);
+}
+
+.flexParamInputCenter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.flexParamInputStart {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.flexParamInputEvently {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.descriptionElements .paramInput {
+    width: var(--primary-input-width);
+    border-radius: var(--primary-border-radius);
+    padding: var(--primary-paddings);
+}
+
+.text {
+    margin: 3px;
+    font-family: var(--primary-font-family);
+    color: var(--primary-text-color);
+}
+
+.flexParamInputEvently .text{
+    color: var(--primary-negative-text-color);
+}
+
+div.paramInput input {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    width: 100%;
+    text-align: center;
+    font-size: var(--font-size-xx-large);
+    outline: none;
+    font-family: var(--primary-font-family);
+    background: var(--primary-block-backgroung);
+}
+
+div.paramInput textarea {
+    margin-top: var(--primary-margin-top);
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    width: 100%;
+    max-width: 38vw; /*Не знаю почему тут надо 38, а не 40*/
+    outline: none;
+    font-family: var(--primary-font-family);
+    background: var(--primary-block-backgroung);
+}
+
+div.paramInput select {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    text-align: center;
+    font-size: var(--font-size-large);
+    outline: none;
+    font-family: var(--primary-font-family);
+    background: var(--primary-block-backgroung);
+}
+
+#smallInputFont1, #smallInputFont2, #smallInputFont3, #smallInputFont4, #smallInputFont5 {
+    font-size: var(--font-size-large);
+    text-align: start;
+}
+
+.paramInput {
+    max-width: var(--primary-max-width);
+    border-radius: var(--primary-border-radius);
+    padding: var(--primary-paddings);
+}
+
+.dateInput{
+    text-align: center;
+    border: var(--primary-border-solid);
+    border-color: var(--primary-text-color);
+    border-radius: var(--primary-border-radius);
+    font-family: var(--primary-font-family);
+    font-size: var(--font-size-xx-large);
+}
+
+.spacer {
+    display: block;
+    height: 5vmin;
+}

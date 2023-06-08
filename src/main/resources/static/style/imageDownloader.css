@@ -1,0 +1,84 @@
+.input-file {
+    position: relative;
+    display: inline-block;
+}
+.input-file span {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--primary-negative-text-color);
+    border-radius: var(--primary-border-radius);
+    background-color: var(--primary-button-background-color);
+    font-family: var(--primary-font-family);
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+.input-file input[type=file] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    width: 0;
+    height: 0;
+}
+
+/* Focus */
+.input-file input[type=file]:focus + span {
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* Hover/active */
+.input-file:hover span {
+    background-color: var(--primary-block-background-color);
+}
+.input-file:active span {
+    background-color: var(--primary-text-color);
+}
+
+/* Disabled */
+.input-file input[type=file]:disabled + span {
+    background-color: #eee;
+}
+
+/* Список c превью */
+.input-file-list {
+    padding: 10px 0;
+    max-width: var(--primary-max-width);
+    display: flex;
+    overflow-x: auto;
+}
+.input-file-list-item {
+    display: inline-block;
+    margin: 0 15px 15px;
+    vertical-align: top;
+    position: relative;
+}
+.input-file-list-item img {
+    max-height: 40vh;
+    max-width: 38vw;
+    border-radius: 10px;
+}
+.input-file-list-name {
+    text-align: center;
+    display: block;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.input-file-list-remove {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 5px;
+    right: 5px;
+    background: #ff0202;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    line-height: 16px;
+    border-radius: 50%;
+}
