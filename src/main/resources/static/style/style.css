@@ -3,18 +3,29 @@
     --primary-border-none-solid: none;
     --primary-border-solid: solid;
     --primary-paddings: 10px;
+    --primary-large-paddings: 20px;
     --primary-margin-top: 3vh;
     --primary-margin-top-small: 10px;
-    --primary-max-width: 40vw;
+    --primary-max-width: 100%;
+    --block-max-width: 40vw;
     --primary-input-width: 10vw;
     --primary-button-background-color: #4d4d4d;
-    --primary-block-background-color: #c4c4c4;
+    --gray-background-color: #f5f5f5;
     --primary-negative-text-color: #f3f3f3;
     --primary-text-color: #878787;
     --primary-font-family: 'Montserrat', sans-serif;
-    --primary-block-backgroung: #f5f5f5;
+    --light-backgroung: #ffffff;
     --font-size-large: large;
-    --font-size-xx-large: xx-large;
+    --font-size-x-large: x-large;
+
+    --menu-background-color: #232323;
+    --menu-border-radius: 20px;
+    --menu-button-size: 45px;
+    --menu-icon-big-size: 32px;
+    --menu-icon-standart-size: 24px;
+
+    --left-part-wight: 7vw;
+    --right-part-wight: 87vw;
 }
 
 h2, h3 {
@@ -25,11 +36,11 @@ h2, h3 {
 
 body {
     margin: 0;
-    display: flex;
-    justify-content: center;
+    height: 100vh;
 }
 
 .generalSeparate {
+    height: 100%;
     display: flex;
     flex-direction: row;
 }
@@ -38,22 +49,65 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: white;
-    width: 80vw;
+    align-items: center;
+    width: var(--right-part-wight);
 }
 
 #menuBlock {
-    background: var(--primary-button-background-color);
-    border-radius: var(--primary-border-radius);
+    background: var(--menu-background-color);
+    border-radius: var(--menu-border-radius);
     margin: var(--primary-margin-top-small);
     padding: var(--primary-paddings);
     height: 60vh;
     position: fixed;
-    vertical-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .mainMenu {
-    width: 20vw;
+    width: var(--left-part-wight);
+    display: flex;
+    align-items: center;
+}
+
+#menuBlock button{
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--menu-button-size);
+    width: var(--menu-button-size);
+    border-radius: 50%;
+    border: var(--primary-border-none-solid);
+    background: var(--menu-background-color);
+}
+
+.innerShadowHover .icon:hover {
+    width: var(--menu-icon-big-size);
+    height: var(--menu-icon-big-size);
+    transition-duration: .8s;
+    /*box-shadow: 5px 5px 5px var(--primary-negative-text-color);*/
+}
+
+.innerShadowHover .icon:not(:hover) {
+    width: var(--menu-icon-standart-size);
+    height: var(--menu-icon-standart-size);
+    transition-duration: .8s;
+    /*box-shadow: 5px 5px 5px var(--primary-negative-text-color);*/
+}
+
+#appantmentName {
+    width: 25%;
+}
+
+#appantmentCoordinates {
+    width: 15%;
+}
+
+.integer {
+    width: 10%;
 }
 
 .aButton {
@@ -83,20 +137,30 @@ body {
 }
 
 .flexRowEditor {
+    padding: var(--primary-large-paddings);
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    flex-direction: column;
+    width: 90%;
+    background-color: var(--gray-background-color);
+    border-radius: var(--primary-border-radius);
+}
+
+.headerInputs {
+    display: flex;
+    justify-content: space-between;
     flex-direction: row;
-    margin-top: var(--primary-margin-top);
+    width: 100%;
+}
+
+.editorContainer {
+    margin-top: 7vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
 }
 
 .editor {
-    display: block;
-    width: 100%;
-    margin: 0 0.5vw;
-}
-
-.description {
-    max-width: var(--primary-max-width);
 }
 
 .descriptionElement {
@@ -104,10 +168,7 @@ body {
     display: inline-block;
     border: var(--primary-border-none-solid);
     border-radius: var(--primary-border-radius);
-    padding: var(--primary-paddings);
     min-width: var(--primary-max-width);
-    border-color: var(--primary-text-color);
-    background: var(--primary-block-backgroung);
 }
 
 .descriptionElements {
@@ -117,10 +178,9 @@ body {
     flex-direction: row;
     border: var(--primary-border-none-solid);
     border-radius: var(--primary-border-radius);
-    padding: var(--primary-paddings);
     min-width: var(--primary-max-width);
     border-color: var(--primary-text-color);
-    background: var(--primary-block-backgroung);
+    background: var(--gray-background-color);
 }
 
 .flexParamInputCenter {
@@ -147,10 +207,25 @@ body {
     padding: var(--primary-paddings);
 }
 
+#description {
+    max-width: var(--block-max-width);
+    padding: var(--primary-large-paddings);
+    background: var(--light-backgroung);
+    border-radius: var(--primary-border-radius);
+}
+
+#description .paramInput, #description input, #description textarea {
+    background: var(--light-backgroung);
+}
+
+#tafiffList {
+    max-width: 35vw;
+}
+
 .text {
     margin: 3px;
     font-family: var(--primary-font-family);
-    color: var(--primary-text-color);
+    /*color: var(--primary-text-color);*/
 }
 
 .flexParamInputEvently .text{
@@ -162,11 +237,10 @@ div.paramInput input {
     border-right: none;
     border-left: none;
     width: 100%;
-    text-align: center;
-    font-size: var(--font-size-xx-large);
+    font-size: var(--font-size-x-large);
     outline: none;
     font-family: var(--primary-font-family);
-    background: var(--primary-block-backgroung);
+    background: var(--gray-background-color);
 }
 
 div.paramInput textarea {
@@ -176,9 +250,10 @@ div.paramInput textarea {
     border-left: none;
     width: 100%;
     max-width: 38vw; /*Не знаю почему тут надо 38, а не 40*/
+    max-height: 28vh;
     outline: none;
     font-family: var(--primary-font-family);
-    background: var(--primary-block-backgroung);
+    background: var(--light-backgroung);
 }
 
 div.paramInput select {
@@ -186,20 +261,32 @@ div.paramInput select {
     border-right: none;
     border-left: none;
     text-align: center;
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-x-large);
     outline: none;
     font-family: var(--primary-font-family);
-    background: var(--primary-block-backgroung);
+    background: var(--gray-background-color);
 }
 
-#smallInputFont1, #smallInputFont2, #smallInputFont3, #smallInputFont4, #smallInputFont5 {
+#buttons {
+    margin-top: var(--primary-margin-top);
+}
+
+.smallInputFont{
     font-size: var(--font-size-large);
     text-align: start;
 }
 
+.slimInput {
+    width: 300px;
+}
+
 .paramInput {
-    max-width: var(--primary-max-width);
-    border-radius: var(--primary-border-radius);
+    display: block;
+    padding: var(--primary-paddings);
+}
+
+.paramInputInt {
+    width: 300px;
     padding: var(--primary-paddings);
 }
 
@@ -209,7 +296,7 @@ div.paramInput select {
     border-color: var(--primary-text-color);
     border-radius: var(--primary-border-radius);
     font-family: var(--primary-font-family);
-    font-size: var(--font-size-xx-large);
+    font-size: var(--font-size-x-large);
 }
 
 .spacer {
