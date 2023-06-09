@@ -1,4 +1,3 @@
-function addPhotos() {
     var dt = new DataTransfer();
     var formData = new FormData;
 
@@ -24,7 +23,6 @@ function addPhotos() {
         };
         this.files = dt.files;
     });
-}
 
 function removeFilesItem(target){
     let name = $(target).prev().text();

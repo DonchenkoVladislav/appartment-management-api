@@ -229,7 +229,15 @@ body {
 }
 
 .flexParamInputEvently .text{
-    color: var(--primary-negative-text-color);
+    /*color: var(--primary-text-color);*/
+}
+
+span .niceInput{
+    text-align: center;
+}
+
+#photosPlace {
+    width: 100%;
 }
 
 div.paramInput input {
