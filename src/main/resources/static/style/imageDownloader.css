@@ -7,7 +7,7 @@
     display: flex;
     cursor: pointer;
     text-decoration: none;
-    color: var(--primary-negative-text-color);
+    color: var(--light-text-color);
     border-radius: var(--primary-border-radius);
     background-color: var(--primary-button-background-color);
     font-family: var(--primary-font-family);
