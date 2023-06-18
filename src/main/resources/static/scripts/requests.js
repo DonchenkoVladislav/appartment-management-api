@@ -34,7 +34,7 @@ function save(formData) {
         //Отправка нового объекта на сервер
         $.ajax({
             type: 'POST',
-            url: '/appartments-add',
+            url: '/save',
             dataType: 'json',
             processData: false,
             contentType: 'application/json; charset=utf-8',
@@ -65,7 +65,7 @@ function save(formData) {
         //Отправка фотографий нового объекта на сервер
         $.ajax({
             type: 'POST',
-            url: '/appartments-add-photos',
+            url: '/save-photos',
             dataType: 'json',
             processData: false,
             contentType: 'application/json; charset=utf-8',
