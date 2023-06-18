@@ -11,6 +11,5 @@ import lombok.Getter;
 public class TariffsInfo {
 
     private String startDate, endDate;
-private int  summaryTariff;
-
+    private int summaryTariff;
 }

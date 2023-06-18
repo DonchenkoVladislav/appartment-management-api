@@ -5,15 +5,13 @@ import com.svoi.vkaliningrade.Models.Tariff;
 import com.svoi.vkaliningrade.Repo.TarffRepositiry;
 import com.svoi.vkaliningrade.dto.RequestFrontPage;
 import com.svoi.vkaliningrade.Repo.ApartmentRepository;
-import com.svoi.vkaliningrade.dto.TariffsInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
-public class ApartmentAddController {
+public class ApartmentsController {
 
     @Autowired
     private ApartmentRepository apartmentRepository;
@@ -21,13 +19,9 @@ public class ApartmentAddController {
     @Autowired
     private TarffRepositiry tarffRepositiry;
 
-    @GetMapping("/apartments-add")
-    public String getApartmentAddPage() {
-        return "apartmentedit";
-    }
-
-    @PostMapping("/apartments-add")
-    public String saveApartment(@RequestBody RequestFrontPage requestBody){
+    //Сохранить информацию об объекте в БД
+    @PostMapping("/save")
+    public String save(@RequestBody RequestFrontPage requestBody){
         ApartmentDescription description = new ApartmentDescription(requestBody);
         apartmentRepository.save(description);
 
@@ -42,17 +36,17 @@ public class ApartmentAddController {
 //            tarffRepositiry.save(saveTariff);
 //        }
 
-        for(TariffsInfo currentTariff : requestBody.getTariffs()){
-            Tariff saveTariff = new Tariff(description.getId(), currentTariff);
-            tarffRepositiry.save(saveTariff);
-        }
-
-//        requestBody.getTariffs().forEach(currentTariff -> {
+//        for(TariffsInfo currentTariff : requestBody.getTariffs()){
 //            Tariff saveTariff = new Tariff(description.getId(), currentTariff);
 //            tarffRepositiry.save(saveTariff);
-//        });
+//        }
 
-        return "apartmentedit";
+        requestBody.getTariffs().forEach(currentTariff -> {
+            Tariff saveTariff = new Tariff(description.getId(), currentTariff);
+            tarffRepositiry.save(saveTariff);
+        });
+
+        return "main";
     }
 
 }

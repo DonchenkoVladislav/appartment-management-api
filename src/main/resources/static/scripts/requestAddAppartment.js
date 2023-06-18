@@ -15,7 +15,7 @@ function save(formData) {
 
     $.ajax({
         type: 'POST',
-        url: '/apartments-add',
+        url: '/save',
         dataType: 'json',
         processData: false,
         contentType: 'application/json; charset=utf-8',
