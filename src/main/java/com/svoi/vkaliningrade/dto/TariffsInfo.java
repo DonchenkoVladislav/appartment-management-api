@@ -10,7 +10,6 @@ import lombok.Getter;
 @Getter
 public class TariffsInfo {
 
-    private Long apartmentId;
     private String startDate, endDate;
 private int  summaryTariff;
 
