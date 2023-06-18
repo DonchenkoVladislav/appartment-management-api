@@ -4,11 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class ApartmentsController {
+public class AppartmentAdminController {
 
-    @GetMapping("/apartments")
-    public String getApartmentsPage(){
-        return "apartments";
+    @GetMapping("/appartments-add")
+    public String getAppartmentAdminEditPage() {
+        return "appartmentedit";
     }
-
 }
