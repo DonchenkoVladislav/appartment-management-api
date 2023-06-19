@@ -51,4 +51,8 @@ public class ApartmentsService {
 
         return shortInfoList;
     }
+
+    public void delete(Long id) {
+        apartmentRepository.deleteById(id);
+    }
 }
