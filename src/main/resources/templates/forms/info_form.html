@@ -1,7 +1,19 @@
 <div id="filters">
     <div id="filterSearch">
         <input type="text" id="filterInput">
-        <button class="filterButton" onclick="">
+        <button class="filterButton" onclick="updateAllApartmentsPageWithFiltersName()">
+            <img width="24" height="24" class="icon" src="icons/zoom.svg" alt="icon">
+        </button>
+    </div>
+    <div id="filterCity">
+        <select id="filterCityInput" class="niceInput">
+            <option>Зеленоградск</option>
+            <option>Калининград</option>
+            <option>Светлогорск</option>
+            <option>Пионерский</option>
+            <option>Янтарный</option>
+        </select>
+        <button class="filterButton" onclick="updateAllApartmentsPageWithFiltersCity()">
             <img width="24" height="24" class="icon" src="icons/zoom.svg" alt="icon">
         </button>
     </div>

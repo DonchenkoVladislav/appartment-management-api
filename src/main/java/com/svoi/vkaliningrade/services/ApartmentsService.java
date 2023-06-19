@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ApartmentsService {
@@ -33,9 +34,23 @@ public class ApartmentsService {
     }
 
     //Сформировать список кратких информаций об объектах для отображения на странице информации
-    public List<ApartmentShortInfo> getApartmentShortInfo() {
+    public List<ApartmentShortInfo> getApartmentShortInfo(String name, String city) {
+        if (name.equals("") & city.equals("")) {
+            return getAllApartmentShortInfo(apartmentRepository.findAll());
+        } else if (!name.equals("")) {
+            return getAllApartmentShortInfo(apartmentRepository.findAll()).stream()
+                    .filter(shortInfo -> shortInfo.getName().equals(name))
+                    .collect(Collectors.toList());
+        } else {
+            return getAllApartmentShortInfo(apartmentRepository.findAll()).stream()
+                    .filter(shortInfo -> shortInfo.getCity().equals(city))
+                    .collect(Collectors.toList());
+        }
+    }
+
+    private List<ApartmentShortInfo> getAllApartmentShortInfo(Iterable<ApartmentDescription> iterable) {
         List<ApartmentShortInfo> shortInfoList = new ArrayList<>();
-        apartmentRepository.findAll().forEach(apartment -> shortInfoList.add(
+        iterable.forEach(apartment -> shortInfoList.add(
                         ApartmentShortInfo.builder()
                                 .id(apartment.getId())
                                 .name(apartment.getName())
@@ -48,7 +63,6 @@ public class ApartmentsService {
                                 .build()
                 )
         );
-
         return shortInfoList;
     }
 }

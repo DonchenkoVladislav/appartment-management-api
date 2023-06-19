@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -26,8 +27,10 @@ public class ApartmentsController {
     }
 
     @GetMapping("/info")
-    public @ResponseBody List<ApartmentShortInfo> getShortInfoListResponse() {
-        return apartmentsService.getApartmentShortInfo();
+    public @ResponseBody List<ApartmentShortInfo> getShortInfoListResponse(
+            @RequestParam(defaultValue = "") String name,
+            @RequestParam(defaultValue = "") String city) {
+        return apartmentsService.getApartmentShortInfo(name, city);
     }
 
 }

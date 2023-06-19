@@ -1,11 +1,19 @@
 //Свормировать страницу со списком всех объектов
 function createAllApartmentsPage() {
     callForm('/info-form')
-    getJson('/info')
+    getJson('/info', '', '')
     // console.log(shortInfoList[0].name)
     // shortInfoList.forEach((item =>{
     //     console.log(item.name)
     // }))
+}
+
+function updateAllApartmentsPageWithFiltersName() {
+    getJson('/info', document.getElementById('filterInput').value, '')
+}
+
+function updateAllApartmentsPageWithFiltersCity() {
+    getJson('/info', '', document.getElementById('filterCityInput').value)
 }
 
 //Удалить все формы и получить форму по URL контроллера HtmlFormController

@@ -81,15 +81,19 @@ function save(formData) {
     }
 }
 
-function getJson(url) {
+function getJson(url, name, city) {
     //Получение объекта для формирования списка со всеми записями
     $.ajax({
-        url: url,
+        url: url + '?name=' + name + '&city=' + city,
         type: 'GET',
         headers: {
             'Accept': 'application/json'
         },
         success: function(info) {
+            document.querySelectorAll('.apartment').forEach(item => {
+                item.remove()
+            })
+
             let countApartments = info.length
             let totalSpace = 0
             let totalPrise = 0
