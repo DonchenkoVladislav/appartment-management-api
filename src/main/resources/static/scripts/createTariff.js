@@ -9,7 +9,7 @@ function createTariff() {
             "                            <div class=\"paramInput\">\n" +
             "                            <span class=\"flexParamInputEvently\">\n" +
             "                                <img width=\"24\" height=\"24\" class=\"icon\" src=\"icons/clock.svg\" alt=\"icon\">\n" +
-            "                                <p class=\"text\">С</p>\n" +
+            "                                <p class=\"title\">С</p>\n" +
             "                                <input type=\"text\" pattern=\"\\d\\d-\\d\\d\" class=\"niceInput\" name=\"input_startDate\"\n" +
             "                                       preloader=\"дд-мм\">\n" +
             "                            </span>\n" +
@@ -18,7 +18,7 @@ function createTariff() {
             "                            <div class=\"paramInput\">\n" +
             "                            <span class=\"flexParamInputEvently\">\n" +
             "                                <img width=\"24\" height=\"24\" class=\"icon\" src=\"icons/clock.svg\" alt=\"icon\">\n" +
-            "                                <p class=\"text\">до</p>\n" +
+            "                                <p class=\"title\">до</p>\n" +
             "                                <input type=\"text\" pattern=\"\\d\\d-\\d\\d\" class=\"niceInput\" name=\"input_endDate\"\n" +
             "                                       preloader=\"дд-мм\">\n" +
             "                            </span>\n" +

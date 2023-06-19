@@ -33,7 +33,7 @@
     background-color: var(--menu-background-color);
 }
 .input-file:active span {
-    background-color: var(--primary-text-color);
+    background-color: var(--gray-text-color);
 }
 
 /* Disabled */
