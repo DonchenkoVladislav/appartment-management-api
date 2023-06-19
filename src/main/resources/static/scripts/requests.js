@@ -81,27 +81,29 @@ function save(formData) {
     }
 }
 
-// function getJson(url) {
-//     //Получение объекта для формирования списка со всеми записями
-//     $.ajax({
-//         url: url,
-//         type: 'GET',
-//         headers: {
-//             'Accept': 'application/json'
-//         },
-//         success: function(all) {
-//             return all
-//         },
-//         error: function(jqXHR, textStatus, errorThrown) {
-//             // Обработка ошибки
-//         }
-//     });
-// }
-
 function getJson(url) {
-    let xhr = new XMLHttpRequest()
-    xhr.open('GET', url)
-    xhr.send()
-
-    return xhr.response
+    //Получение объекта для формирования списка со всеми записями
+    $.ajax({
+        url: url,
+        type: 'GET',
+        headers: {
+            'Accept': 'application/json'
+        },
+        success: function(info) {
+            let countApartments = info.length
+            let totalSpace = 0
+            let totalPrise = 0
+            info.forEach(item => {
+                totalSpace += item.space
+                totalPrise += item.summary
+                createApartmetnItem(item)
+            })
+            document.getElementById('totalSpace').innerHTML = totalSpace
+            document.getElementById('totalApartments').innerHTML = countApartments
+            document.getElementById('averagePrice').innerHTML = totalPrise/countApartments
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Обработка ошибки
+        }
+    });
 }

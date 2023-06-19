@@ -16,8 +16,8 @@ public class HtmlFormController {
     }
 
     /*Контроллер для получения формы фильтров*/
-    @GetMapping("/filter-form")
+    @GetMapping("/info-form")
     public String getFilterForm() {
-        return "forms/filter_form";
+        return "forms/info_form";
     }
 }
