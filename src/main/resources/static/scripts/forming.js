@@ -1,19 +1,11 @@
 //Свормировать страницу со списком всех объектов
 function createAllApartmentsPage() {
     callForm('/info-form')
-    getJson('/info', '', '')
-    // console.log(shortInfoList[0].name)
-    // shortInfoList.forEach((item =>{
-    //     console.log(item.name)
-    // }))
+    getJson('/info', '', '-')
 }
 
-function updateAllApartmentsPageWithFiltersName() {
-    getJson('/info', document.getElementById('filterInput').value, '')
-}
-
-function updateAllApartmentsPageWithFiltersCity() {
-    getJson('/info', '', document.getElementById('filterCityInput').value)
+function search() {
+    getJson('/info', document.getElementById('filterInput').value, document.getElementById('filterCityInput').value)
 }
 
 //Удалить все формы и получить форму по URL контроллера HtmlFormController
@@ -44,6 +36,13 @@ function removeOtherForm() {
     if (filterForm !== null) {
         filterForm.remove()
     }
+}
+
+//Удалить все элементы с классом 'className'
+function removeElementsWithClassName(className) {
+    document.querySelectorAll('.' + className).forEach(item => {
+        item.remove()
+    })
 }
 
 function createApartmetnItem(item) {
@@ -91,6 +90,12 @@ function createApartmetnItem(item) {
         '<p class="title">' + item.space + '</p>' +
         '<p class="title">м²</p>'
 
+    let city = document.createElement('div')
+    city.className = 'itemsElement'
+    city.innerHTML =
+        // '<img width="24" height="24" class="icon" src="icons/apartment.svg" alt="icon">' +
+        '<p class="title">' + item.city + '</p>'
+
     let adult = document.createElement('div')
     adult.className = 'itemsElement'
     adult.innerHTML =
@@ -104,7 +109,7 @@ function createApartmetnItem(item) {
         '<p class="title">' + item.summary + '</p>' +
         '<p class="title">₽</p>'
 
-    firstRow.prepend( idNumber, name, calendarButton, updateButton, space, adult, summary, deteteButton)
+    firstRow.prepend( idNumber, name, calendarButton, updateButton, city, space, adult, summary, deteteButton)
     apartment.prepend(firstRow, secondRow)
     document.getElementById('container').prepend(apartment)
 }

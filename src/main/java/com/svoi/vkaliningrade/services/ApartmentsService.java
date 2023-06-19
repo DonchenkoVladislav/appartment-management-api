@@ -35,9 +35,14 @@ public class ApartmentsService {
 
     //Сформировать список кратких информаций об объектах для отображения на странице информации
     public List<ApartmentShortInfo> getApartmentShortInfo(String name, String city) {
-        if (name.equals("") & city.equals("")) {
+        if (name.equals("") & city.equals("-")) {
             return getAllApartmentShortInfo(apartmentRepository.findAll());
-        } else if (!name.equals("")) {
+        } else if (!name.equals("") & !city.equals("-")) {
+            return getAllApartmentShortInfo(apartmentRepository.findAll()).stream()
+                    .filter(shortInfo -> shortInfo.getName().equals(name))
+                    .filter(shortInfo -> shortInfo.getCity().equals(city))
+                    .collect(Collectors.toList());
+        } else if (!name.equals("") & city.equals("-")) {
             return getAllApartmentShortInfo(apartmentRepository.findAll()).stream()
                     .filter(shortInfo -> shortInfo.getName().equals(name))
                     .collect(Collectors.toList());

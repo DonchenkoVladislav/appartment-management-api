@@ -90,9 +90,7 @@ function getJson(url, name, city) {
             'Accept': 'application/json'
         },
         success: function(info) {
-            document.querySelectorAll('.apartment').forEach(item => {
-                item.remove()
-            })
+            removeElementsWithClassName('apartment')
 
             let countApartments = info.length
             let totalSpace = 0
