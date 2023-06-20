@@ -93,6 +93,7 @@ public class ApartmentsService {
                                 .build()
                 )
         );
+
         return shortInfoList;
     }
 
@@ -100,5 +101,9 @@ public class ApartmentsService {
         List<ApartmentDescription> list = new ArrayList<>();
         apartmentRepository.findAll().forEach(list::add);
         return list;
+    }
+
+    public void delete(Long id) {
+        apartmentRepository.deleteById(id);
     }
 }

@@ -5,6 +5,7 @@ import com.svoi.vkaliningrade.dto.RequestFrontPage;
 import com.svoi.vkaliningrade.services.ApartmentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,4 +40,10 @@ public class ApartmentsController {
     public @ResponseBody List<String> getAllApartmentsName () {
         return apartmentsService.getAllApartmentsName();
     }
+    @DeleteMapping("/delete")
+    public String delete(@RequestParam(defaultValue = "0") Long id){
+        apartmentsService.delete(id);
+        return "main";
+    }
+
 }
