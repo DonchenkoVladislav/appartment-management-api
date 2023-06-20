@@ -62,7 +62,8 @@ function createApartmetnItem(item) {
         '<img width="20" height="20" class="icon" src="icons/calendar.svg" alt="icon">'
 
     let deteteButton = document.createElement('button')
-    deteteButton.onclick = ''
+    //Тут все нормально работает - ковычки не трогать
+    deteteButton.setAttribute('onclick', 'deleteElement("delete", ' + item.id + ')')
     deteteButton.type = 'button'
     deteteButton.className = 'iconButton'
     deteteButton.innerHTML =

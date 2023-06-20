@@ -109,3 +109,21 @@ function getJson(url, name, city) {
         }
     });
 }
+
+//Функция используется в forming.js. Не удалять
+function deleteElement(url, id) {
+    return $.ajax({
+        url: '/' + url + '?id=' + id,
+        type: 'DELETE',
+        headers: {
+            'Accept': 'application/json'
+        },
+        success: function() {
+            getAllApartmentNames()
+            getJson('/info', '', '-')
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Обработка ошибки
+        }
+    });
+}
