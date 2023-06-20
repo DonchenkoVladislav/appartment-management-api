@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+import static com.svoi.vkaliningrade.CommonConstants.ALL_OBJECTS_TEXT;
+
 @Controller
 public class ApartmentsController {
 
@@ -28,9 +30,13 @@ public class ApartmentsController {
 
     @GetMapping("/info")
     public @ResponseBody List<ApartmentShortInfo> getShortInfoListResponse(
-            @RequestParam(defaultValue = "") String name,
-            @RequestParam(defaultValue = "") String city) {
+            @RequestParam(defaultValue = ALL_OBJECTS_TEXT) String name,
+            @RequestParam(defaultValue = "-") String city) {
         return apartmentsService.getApartmentShortInfo(name, city);
     }
 
+    @GetMapping("/nameList")
+    public @ResponseBody List<String> getAllApartmentsName () {
+        return apartmentsService.getAllApartmentsName();
+    }
 }

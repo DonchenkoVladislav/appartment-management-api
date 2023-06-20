@@ -1,6 +1,7 @@
 //Свормировать страницу со списком всех объектов
 function createAllApartmentsPage() {
     callForm('/info-form')
+    getAllApartmentNames()
     getJson('/info', '', '-')
 }
 
