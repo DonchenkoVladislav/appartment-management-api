@@ -81,15 +81,17 @@ function save(formData) {
     }
 }
 
-function getJson(url) {
+function getJson(url, name, city) {
     //Получение объекта для формирования списка со всеми записями
     $.ajax({
-        url: url,
+        url: url + '?name=' + name + '&city=' + city,
         type: 'GET',
         headers: {
             'Accept': 'application/json'
         },
         success: function(info) {
+            removeElementsWithClassName('apartment')
+
             let countApartments = info.length
             let totalSpace = 0
             let totalPrise = 0
@@ -101,6 +103,24 @@ function getJson(url) {
             document.getElementById('totalSpace').innerHTML = totalSpace
             document.getElementById('totalApartments').innerHTML = countApartments
             document.getElementById('averagePrice').innerHTML = totalPrise/countApartments
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Обработка ошибки
+        }
+    });
+}
+
+//Функция используется в forming.js. Не удалять
+function deleteElement(url, id) {
+    return $.ajax({
+        url: '/' + url + '?id=' + id,
+        type: 'DELETE',
+        headers: {
+            'Accept': 'application/json'
+        },
+        success: function() {
+            getAllApartmentNames()
+            getJson('/info', '', '-')
         },
         error: function(jqXHR, textStatus, errorThrown) {
             // Обработка ошибки

@@ -1,11 +1,12 @@
 //Свормировать страницу со списком всех объектов
 function createAllApartmentsPage() {
     callForm('/info-form')
-    getJson('/info')
-    // console.log(shortInfoList[0].name)
-    // shortInfoList.forEach((item =>{
-    //     console.log(item.name)
-    // }))
+    getAllApartmentNames()
+    getJson('/info', '', '-')
+}
+
+function search() {
+    getJson('/info', document.getElementById('filterInput').value, document.getElementById('filterCityInput').value)
 }
 
 //Удалить все формы и получить форму по URL контроллера HtmlFormController
@@ -38,6 +39,13 @@ function removeOtherForm() {
     }
 }
 
+//Удалить все элементы с классом 'className'
+function removeElementsWithClassName(className) {
+    document.querySelectorAll('.' + className).forEach(item => {
+        item.remove()
+    })
+}
+
 function createApartmetnItem(item) {
     let updateButton = document.createElement('button')
     updateButton.onclick = ''
@@ -54,7 +62,8 @@ function createApartmetnItem(item) {
         '<img width="20" height="20" class="icon" src="icons/calendar.svg" alt="icon">'
 
     let deteteButton = document.createElement('button')
-    deteteButton.onclick = ''
+    //Тут все нормально работает - ковычки не трогать
+    deteteButton.setAttribute('onclick', 'deleteElement("delete", ' + item.id + ')')
     deteteButton.type = 'button'
     deteteButton.className = 'iconButton'
     deteteButton.innerHTML =
@@ -83,6 +92,12 @@ function createApartmetnItem(item) {
         '<p class="title">' + item.space + '</p>' +
         '<p class="title">м²</p>'
 
+    let city = document.createElement('div')
+    city.className = 'itemsElement'
+    city.innerHTML =
+        // '<img width="24" height="24" class="icon" src="icons/apartment.svg" alt="icon">' +
+        '<p class="title">' + item.city + '</p>'
+
     let adult = document.createElement('div')
     adult.className = 'itemsElement'
     adult.innerHTML =
@@ -96,7 +111,7 @@ function createApartmetnItem(item) {
         '<p class="title">' + item.summary + '</p>' +
         '<p class="title">₽</p>'
 
-    firstRow.prepend( idNumber, name, calendarButton, updateButton, space, adult, summary, deteteButton)
+    firstRow.prepend( idNumber, name, calendarButton, updateButton, city, space, adult, summary, deteteButton)
     apartment.prepend(firstRow, secondRow)
     document.getElementById('container').prepend(apartment)
 }
