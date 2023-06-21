@@ -1,7 +1,7 @@
 package com.svoi.vkaliningrade.Controllers;
 
 import com.svoi.vkaliningrade.dto.ApartmentShortInfo;
-import com.svoi.vkaliningrade.dto.RequestFrontPage;
+import com.svoi.vkaliningrade.dto.ApartmentInfo;
 import com.svoi.vkaliningrade.services.ApartmentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +24,7 @@ public class ApartmentsController {
 
     //Сохранить информацию об объекте в БД
     @PostMapping("/save")
-    public String save(@RequestBody RequestFrontPage requestBody){
+    public String save(@RequestBody ApartmentInfo requestBody){
         apartmentsService.save(requestBody);
         return "main";
     }
@@ -40,10 +40,16 @@ public class ApartmentsController {
     public @ResponseBody List<String> getAllApartmentsName () {
         return apartmentsService.getAllApartmentsName();
     }
+
     @DeleteMapping("/delete")
     public String delete(@RequestParam(defaultValue = "0") Long id){
         apartmentsService.delete(id);
         return "main";
+    }
+
+    @GetMapping("/edit")
+    public @ResponseBody ApartmentInfo editApartmentInfo(@RequestParam(defaultValue = "0") Long id){
+       return apartmentsService.getApartment(id);
     }
 
 }
