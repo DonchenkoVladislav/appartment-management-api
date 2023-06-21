@@ -5,7 +5,7 @@ import com.svoi.vkaliningrade.Models.Tariff;
 import com.svoi.vkaliningrade.Repo.ApartmentRepository;
 import com.svoi.vkaliningrade.Repo.TarffRepositiry;
 import com.svoi.vkaliningrade.dto.ApartmentShortInfo;
-import com.svoi.vkaliningrade.dto.RequestFrontPage;
+import com.svoi.vkaliningrade.dto.ApartmentInfo;
 import com.svoi.vkaliningrade.dto.TariffsInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import static com.svoi.vkaliningrade.CommonConstants.ALL_OBJECTS_TEXT;
@@ -28,7 +27,7 @@ public class ApartmentsService {
     private TarffRepositiry tarffRepositiry;
 
     //Сохранить информацию об объекте в БД
-    public void save(RequestFrontPage body) {
+    public void save(ApartmentInfo body) {
         ApartmentDescription description = new ApartmentDescription(body);
         apartmentRepository.save(description);
 
@@ -97,6 +96,7 @@ public class ApartmentsService {
         return shortInfoList;
     }
 
+
     private List<ApartmentDescription> getAllApartmentsList() {
         List<ApartmentDescription> list = new ArrayList<>();
         apartmentRepository.findAll().forEach(list::add);
@@ -105,5 +105,46 @@ public class ApartmentsService {
 
     public void delete(Long id) {
         apartmentRepository.deleteById(id);
+    }
+
+    public ApartmentInfo getApartment(Long id) {
+        ApartmentDescription description = apartmentRepository.findById(id).get();
+
+        List<Tariff> tariffs = new ArrayList<>();
+
+        List<TariffsInfo> findTariff = new ArrayList<>();
+
+        tarffRepositiry.findAll().forEach(tariffs::add); // каждый элемент добавляется в тариф
+
+        for (Tariff tariff : tariffs) {
+            if (id.equals(tariff.getAppartmentId())) {
+                findTariff.add(
+                        TariffsInfo.builder()
+                        .startDate(tariff.getStartDate())
+                        .endDate(tariff.getEndDate())
+                        .summaryTariff(tariff.getSummaryTariff())
+                        .build()
+                );
+            }
+        }
+
+        return ApartmentInfo.builder()
+                .id(description.getId())
+                .description(description.getDescription())
+                .view(description.getView())
+                .name(description.getName())
+                .city(description.getCity())
+                .coordinates(description.getCoordinates())
+                .beds(description.getBeds())
+                .conveniences(description.getConveniences())
+                .services(description.getServices())
+                .space(description.getSpace())
+                .adult(description.getAdult())
+                .children(description.getChildren())
+                .from(description.getFromDay())
+                .summary(description.getSummary())
+                .tariffs(findTariff)
+                .build();
+
     }
 }
