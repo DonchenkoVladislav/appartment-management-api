@@ -19,6 +19,7 @@ public class Tariff {
     private String endDate;
     private int summaryTariff;
 
+    public Tariff(){}
     public Tariff(Long appartmentId, TariffsInfo tInfo) {
         this.appartmentId = appartmentId;
         this.startDate = tInfo.getStartDate();

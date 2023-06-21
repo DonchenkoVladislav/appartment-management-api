@@ -103,20 +103,29 @@ public class ApartmentsService {
         return list;
     }
 
+    private List<Tariff> getAllTariffList() {
+        List<Tariff> list = new ArrayList<>();
+        tarffRepositiry.findAll().forEach(list::add);
+        return list;
+    }
+
     public void delete(Long id) {
         apartmentRepository.deleteById(id);
+        getAllTariffList().forEach(
+                tariff -> {
+                    if (id.equals((tariff.getAppartmentId()))){
+                        tarffRepositiry.delete(tariff);
+                    }
+                }
+        );
     }
 
     public ApartmentInfo getApartment(Long id) {
         ApartmentDescription description = apartmentRepository.findById(id).get();
 
-        List<Tariff> tariffs = new ArrayList<>();
-
         List<TariffsInfo> findTariff = new ArrayList<>();
 
-        tarffRepositiry.findAll().forEach(tariffs::add); // каждый элемент добавляется в тариф
-
-        for (Tariff tariff : tariffs) {
+        for (Tariff tariff : getAllTariffList()) {
             if (id.equals(tariff.getAppartmentId())) {
                 findTariff.add(
                         TariffsInfo.builder()
