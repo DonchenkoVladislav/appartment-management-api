@@ -127,3 +127,34 @@ function deleteElement(url, id) {
         }
     });
 }
+
+function editElement(id) {
+    return $.ajax({
+        url: '/edit' + url + '?id=' + id,
+        type: 'DELETE',
+        headers: {
+            'Accept': 'application/json'
+        },
+        success: function(edit) {
+            callForm('/adding-form')
+
+            document.querySelector('input[name="input_name"]').value = edit.name
+            //
+            // "name": $("[name='input_name']").val(),
+            //     "city": $("[name='input_city']").val(),
+            //     "coordinates": $("[name='input_coordinates']").val(),
+            //     "space": $("[name='input_space']").val(),
+            //     "adult": $("[name='input_adult']").val(),
+            //     "children": $("[name='input_children']").val(),
+            //     "beds": $("[name='input_beds']").val(),
+            //     "from": $("[name='input_from']").val(),
+            //     "summary": $("[name='input_summary']").val(),
+            //     "view": $("[name='input_view']").val(),
+            //     "conveniences": $("[name='input_conveniences']").val(),
+            //     "services": $("[name='input_services']").val(),
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Обработка ошибки
+        }
+    });
+}

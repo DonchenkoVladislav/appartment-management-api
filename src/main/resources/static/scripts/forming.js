@@ -48,7 +48,7 @@ function removeElementsWithClassName(className) {
 
 function createApartmetnItem(item) {
     let updateButton = document.createElement('button')
-    updateButton.onclick = ''
+    updateButton.setAttribute('onclick', 'editElement(' + item.id + ')')
     updateButton.type = 'button'
     updateButton.className = 'iconButton'
     updateButton.innerHTML =
