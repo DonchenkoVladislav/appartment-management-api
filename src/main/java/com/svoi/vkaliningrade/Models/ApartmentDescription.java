@@ -1,6 +1,6 @@
 package com.svoi.vkaliningrade.Models;
 
-import com.svoi.vkaliningrade.dto.RequestFrontPage;
+import com.svoi.vkaliningrade.dto.ApartmentInfo;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,7 +20,7 @@ public class ApartmentDescription {
     public ApartmentDescription() {
     }
 
-    public ApartmentDescription(RequestFrontPage responseApartment) {
+    public ApartmentDescription(ApartmentInfo responseApartment) {
         this.description = responseApartment.getDescription();
         this.view = responseApartment.getView();
         this.name = responseApartment.getName();
