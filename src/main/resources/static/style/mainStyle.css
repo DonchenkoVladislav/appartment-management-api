@@ -31,6 +31,11 @@
 
     --left-part-wight: 10vw;
     --right-part-wight: 90vw;
+
+    --edit-container-height: 200px;
+    --animation-time: .6s;
+
+    --adding-form-height: 687px;
 }
 
 h2, h3 {
@@ -58,11 +63,11 @@ body {
 }
 
 .mainColumnFullContainer {
-    margin-top: 5vh;
+    /*margin-top: 5vh;*/
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    /*align-items: center;*/
     width: 100%;
 }
 
@@ -85,7 +90,7 @@ body {
     align-items: center;
 }
 
-#menuBlock button{
+#menuBlock button {
     margin: 5px;
     display: flex;
     justify-content: center;
@@ -100,27 +105,34 @@ body {
 .buttonHover .icon:hover {
     width: var(--menu-icon-big-size);
     height: var(--menu-icon-big-size);
-    transition-duration: .8s;
+    transition-duration: var(--animation-time);
     /*box-shadow: 5px 5px 5px var(--primary-negative-text-color);*/
 }
 
 .buttonHover .icon:not(:hover) {
     width: var(--menu-icon-standart-size);
     height: var(--menu-icon-standart-size);
-    transition-duration: .8s;
+    transition-duration: var(--animation-time);
     /*box-shadow: 5px 5px 5px var(--primary-negative-text-color);*/
 }
 
+#centerAddingContainer {
+display: flex;
+    align-items: center;
+    height: 100%;
+    width: 90%;
+}
+
 #appantmentName {
-    width: 25%;
+    /*width: 25%;*/
 }
 
 #appantmentCoordinates {
-    width: 15%;
+    /*width: 15%;*/
 }
 
 .integer {
-    width: 10%;
+    /*width: 10%;*/
 }
 
 .aButton {
@@ -149,35 +161,80 @@ body {
     border: var(--primary-border-none-solid)
 }
 
-#addingFormContainer {
-    padding: var(--primary-large-paddings);
+#atributesContainer, #descriptionContainer, #tariffContainer {
+    /*padding-left: var(--primary-large-paddings);*/
+    /*padding-right: var(--primary-large-paddings);*/
     display: flex;
-    justify-content: center;
+    /*justify-content: center;*/
     flex-direction: column;
-    width: 90%;
-    background-color: var(--gray-background-color);
-    border-radius: var(--primary-border-radius);
+    width: 33%;
+    min-width: 450px;
+    /*height: var(--adding-form-height);*/
+    /*background-color: var(--gray-background-color);*/
+    /*border-radius: var(--primary-border-radius);*/
+}
+
+#descriptionContainer, #tariffContainer {
+    margin-left: 10px;
+}
+
+#photosContainer {
+    height: 300px;
+}
+
+.savePhotoButton, #addTariffButton {
+   margin-left: var(--small-inset-pxl);
+   margin-top: var(--small-inset-pxl);
+}
+
+#saveButton {
+    margin-left: var(--small-inset-pxl);
+    margin-bottom: var(--small-inset-pxl);
 }
 
 .headerInputs {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     flex-direction: row;
     width: 100%;
 }
 
 .editorContainer {
-    margin-top: 7vh;
+    /*width: 500px;*/
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+}
+
+#mainAtrbute, #additionalAtrbute {
+    background: var(--gray-background-color);
+    padding-left: var(--small-inset-pxl);
+    padding-right: 30px;
+    border-radius: var(--primary-border-radius);
+    height: 334px;
+    margin-bottom: var(--small-inset-pxl);
+}
+
+#tariffContainer, #photosContainer {
+    background: var(--gray-background-color);
+    /*padding-left: var(--small-inset-pxl);*/
+    /*padding-right: 30px;*/
+    border-radius: var(--primary-border-radius);
+    /*margin-bottom: var(--small-inset-pxl);*/
+}
+
+#left {
+    width: 50%;
 }
 
 .editor {
 }
 
 .descriptionElement {
-    margin-top: var(--small-inset-pxl);
+    height: 368px;
+    margin-bottom: var(--small-inset-pxl);
+    background: var(--gray-background-color);
+    /*margin-top: var(--small-inset-pxl);*/
     display: inline-block;
     border: var(--primary-border-none-solid);
     border-radius: var(--primary-border-radius);
@@ -185,7 +242,7 @@ body {
 }
 
 .descriptionElements {
-    margin-top: var(--small-inset-pxl);
+    /*margin-top: var(--small-inset-pxl);*/
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
@@ -208,11 +265,25 @@ body {
     justify-content: start;
 }
 
+.flexParamInputBetween {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .flexParamInputEvently {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
+
+.flexAlignBeween {
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-end; */
+    justify-content: inherit;
+}
+
 
 .descriptionElements .paramInput {
     width: var(--primary-input-width);
@@ -231,8 +302,29 @@ body {
     background: var(--light-backgroung);
 }
 
+/*    var formData = new FormData;
+*/
+/*formData.append('image_' + i, file);*/
+
 #tafiffList {
-    max-width: 35vw;
+    /*max-width: 75%;*/
+    height: 84%;
+}
+
+#tafiffList {
+    overflow-x: auto;
+    max-height: 560px;
+    margin-bottom: var(--small-inset-pxl);
+    margin-top: var(--small-inset-pxl);
+}
+
+#tariffContainer {
+    height: 680px;
+    /*height: 296px;*/
+    /*width: 85%;*/
+    /*min-height: 117px;*/
+    /*background: var(--gray-background-color);*/
+    /*border-radius: var(--primary-border-radius);*/
 }
 
 .title {
@@ -248,11 +340,11 @@ body {
     margin: var(--small-inset-pxl);
 }
 
-.flexParamInputEvently .title{
+.flexParamInputEvently .title {
     /*color: var(--primary-text-color);*/
 }
 
-span .niceInput{
+span .niceInput {
     text-align: center;
 }
 
@@ -260,22 +352,21 @@ span .niceInput{
     width: 100%;
 }
 
-div.paramInput input {
-    border-top: none;
-    border-right: none;
-    border-left: none;
+div.paramInput input, div.paramInput select {
+    border: var(--primary-border-none-solid);
+    border-radius: var(--primary-border-radius);
     width: 100%;
-    font-size: var(--font-size-x-large);
+    font-size: var(--standart-font-size);
     outline: none;
+    padding: 10px;
     font-family: var(--primary-font-family);
-    background: var(--gray-background-color);
+    /*background: var(--gray-background-color);*/
 }
 
 div.paramInput textarea {
     margin-top: var(--primary-indent);
-    border-top: none;
-    border-right: none;
-    border-left: none;
+    border: var(--primary-border-none-solid);
+    border-radius: var(--primary-border-radius);
     width: 100%;
     max-width: 38vw; /*Не знаю почему тут надо 38, а не 40*/
     max-height: 28vh;
@@ -285,21 +376,19 @@ div.paramInput textarea {
 }
 
 div.paramInput select {
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    text-align: center;
-    font-size: var(--font-size-x-large);
-    outline: none;
-    font-family: var(--primary-font-family);
-    background: var(--gray-background-color);
+    /*border: none;*/
+    /*text-align: center;*/
+    /*font-size: var(--standart-font-size);*/
+    /*outline: none;*/
+    /*font-family: var(--primary-font-family);*/
+    /*background: var(--gray-background-color);*/
 }
 
 #buttons {
     margin-top: var(--primary-indent);
 }
 
-.smallInputFont{
+.smallInputFont {
     font-size: var(--font-size-large);
     text-align: start;
 }
@@ -311,6 +400,11 @@ div.paramInput select {
 .paramInput {
     display: block;
     padding: var(--primary-paddings);
+    /*padding-right: var(--primary-paddings);*/
+}
+
+.additionalParamInput {
+    /*width: 65%;*/
 }
 
 .paramInputInt {
@@ -318,7 +412,7 @@ div.paramInput select {
     padding: var(--primary-paddings);
 }
 
-.dateInput{
+.dateInput {
     text-align: center;
     border: var(--primary-border-solid);
     border-color: var(--gray-text-color);
@@ -330,4 +424,29 @@ div.paramInput select {
 .spacer {
     display: block;
     height: 5vmin;
+}
+
+#previewImages {
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    padding: var(--small-inset-pxl);
+    width: 93%;
+}
+
+.photoElements {
+    max-height: 225px;
+    max-width: 100%;
+    margin: 0 5px;
+    border-radius: var(--primary-border-radius);
+}
+
+#addImages {
+
+}
+
+.fileInput {
+    width: 0;
+    height: 0;
+    opacity: 0;
 }

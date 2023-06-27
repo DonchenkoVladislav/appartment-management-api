@@ -1,4 +1,4 @@
-function save(formData) {
+function save() {
 
     let tariffList = new Array()
 
@@ -18,7 +18,6 @@ function save(formData) {
         $("[name='input_coordinates']").val(),
         $("[name='input_space']").val(),
         $("[name='input_adult']").val(),
-        $("[name='input_beds']").val(),
         $("[name='input_summary']").val()
     ]
 
@@ -47,6 +46,7 @@ function save(formData) {
                 "children": $("[name='input_children']").val(),
                 "beds": $("[name='input_beds']").val(),
                 "from": $("[name='input_from']").val(),
+                "description": $("[name='input_description']").val(),
                 "summary": $("[name='input_summary']").val(),
                 "view": $("[name='input_view']").val(),
                 "conveniences": $("[name='input_conveniences']").val(),
@@ -60,16 +60,16 @@ function save(formData) {
             }
         })
 
-        formData.append("appartmentName", $("[name='input_name']").val())
+        formDataPhotos.append("appartmentName", $("[name='input_name']").val())
 
-        //Отправка фотографий нового объекта на сервер
+        // Отправка фотографий нового объекта на сервер
         $.ajax({
             type: 'POST',
             url: '/save-photos',
-            dataType: 'json',
+            // dataType: 'image/jpeg, image/png',
             processData: false,
-            contentType: 'application/json; charset=utf-8',
-            data: formData,
+            contentType: 'image/jpeg; image/png; charset=utf-8',
+            data: formDataPhotos,
             error: function (request, status, error) {
                 if (!request.status === 200) {
                     alert("Не удалось загрузить изображения")
@@ -79,6 +79,7 @@ function save(formData) {
     } else {
         alert("Заполнены не все обязательные поля")
     }
+
 }
 
 function getJson(url, name, city) {
@@ -89,7 +90,7 @@ function getJson(url, name, city) {
         headers: {
             'Accept': 'application/json'
         },
-        success: function(info) {
+        success: function (info) {
             removeElementsWithClassName('apartment')
 
             let countApartments = info.length
@@ -102,9 +103,9 @@ function getJson(url, name, city) {
             })
             document.getElementById('totalSpace').innerHTML = totalSpace
             document.getElementById('totalApartments').innerHTML = countApartments
-            document.getElementById('averagePrice').innerHTML = totalPrise/countApartments
+            document.getElementById('averagePrice').innerHTML = totalPrise / countApartments
         },
-        error: function(jqXHR, textStatus, errorThrown) {
+        error: function (jqXHR, textStatus, errorThrown) {
             // Обработка ошибки
         }
     });
@@ -118,43 +119,134 @@ function deleteElement(url, id) {
         headers: {
             'Accept': 'application/json'
         },
-        success: function() {
+        success: function () {
             getAllApartmentNames()
             getJson('/info', '', '-')
         },
-        error: function(jqXHR, textStatus, errorThrown) {
+        error: function (jqXHR, textStatus, errorThrown) {
             // Обработка ошибки
         }
     });
 }
 
 function editElement(id) {
-    return $.ajax({
-        url: '/edit' + url + '?id=' + id,
-        type: 'DELETE',
+
+    // удаляем все кнопоки закрытия формы редактирвоания, чтоб они не копились
+    deleteElementById('closeFormButton')
+
+    // создаем кнопочку для закрытия формы
+    let closeButton = document.createElement('button')
+    closeButton.setAttribute('onclick', 'stopEditing()')
+    closeButton.type = 'button'
+    closeButton.className = 'iconButton'
+    closeButton.id = 'closeFormButton'
+    closeButton.innerHTML =
+        '<img width="20" height="20" class="icon" src="icons/close.svg" alt="icon">'
+
+    deleteEddingForms()
+
+    $.ajax({
+        url: '/edit?id=' + id,
+        type: 'GET',
         headers: {
             'Accept': 'application/json'
         },
-        success: function(edit) {
-            callForm('/adding-form')
+        success: function (edit) {
 
-            document.querySelector('input[name="input_name"]').value = edit.name
-            //
-            // "name": $("[name='input_name']").val(),
-            //     "city": $("[name='input_city']").val(),
-            //     "coordinates": $("[name='input_coordinates']").val(),
-            //     "space": $("[name='input_space']").val(),
-            //     "adult": $("[name='input_adult']").val(),
-            //     "children": $("[name='input_children']").val(),
-            //     "beds": $("[name='input_beds']").val(),
-            //     "from": $("[name='input_from']").val(),
-            //     "summary": $("[name='input_summary']").val(),
-            //     "view": $("[name='input_view']").val(),
-            //     "conveniences": $("[name='input_conveniences']").val(),
-            //     "services": $("[name='input_services']").val(),
+            //Находим все открытые окошки с формами
+            let editContainers = document.querySelectorAll('div.apartment div.animate-height')
+
+            //Закрываем все открытые окошки с формами
+            if (editContainers.length > 0) {
+                editContainers.forEach(element => {
+                    element.className = 'animate-height-none'
+                    // element.remove()
+                })
+            }
+
+            // Определяем для какого элемента открыть окошко с формой
+            const apartmentDiv = findElementByText('div.apartment div.apartmentRow p', edit.id.toString())
+                .parentElement
+                .parentElement;
+
+            // создаем div элемент
+            const editContainer = document.createElement('div');
+
+            // добавляем класс "animate-height" к элементу div - окошко для формы mainColumnFullContainers (создается выше)
+            editContainer.classList.add('animate-height');
+
+            // добавляем элемент на страницу - открываем это окошко (выше)
+            apartmentDiv.appendChild(editContainer);
+
+            // добавляем кнопочку для закрытия формы
+            findElementByText('div.apartment div.apartmentRow p', edit.id.toString())
+                .parentElement
+                .append(closeButton)
+
+            //Заполняем все поля формы mainColumnFullContainers
+            setTimeout(function () {
+                    getFormAndPrependTo(
+                        '/adding-form', document.getElementsByClassName('animate-height')[0])
+                },
+                800)
+            waitLoadElementByNameAndFillValue('input_name', edit.name)
+            waitLoadElementByNameAndFillValue('input_city', edit.city)
+            waitLoadElementByNameAndFillValue('input_coordinates', edit.coordinates)
+            waitLoadElementByNameAndFillValue('input_space', edit.space)
+            waitLoadElementByNameAndFillValue('input_adult', edit.adult)
+            waitLoadElementByNameAndFillValue('input_children', edit.children)
+            waitLoadElementByNameAndFillValue('input_beds', edit.beds)
+            waitLoadElementByNameAndFillValue('input_from', edit.from)
+            waitLoadElementByNameAndFillValue('input_summary', edit.summary)
+            waitLoadElementByNameAndFillValue('input_view', edit.view)
+            waitLoadElementByNameAndFillValue('input_conveniences', edit.conveniences)
+            waitLoadElementByNameAndFillValue('input_services', edit.services)
+            createTariffsInAddingFrom('tariff', edit.tariffs)
         },
-        error: function(jqXHR, textStatus, errorThrown) {
+        error: function (jqXHR, textStatus, errorThrown) {
             // Обработка ошибки
         }
     });
+
+
+
+    // Вызов функции с указанием селектора и времени ожидания
+    // Добавление фотографий
+    waitForPhotoSpaceToDisplay('#addImages', 100);
+}
+
+function stopEditing() {
+    // удаляем все кнопоки закрытия формы редактирвоания, чтоб они не копились
+    deleteElementById('closeFormButton')
+    deleteEddingForms()
+    closeEddingForms()
+}
+
+function deleteEddingForms() {
+    //находим все формы, которая включит в себя все описание квартиры
+    let mainColumnFullContainers = document.getElementsByClassName('mainColumnFullContainer')
+    //Удаляем уже открытые формы
+    if (mainColumnFullContainers.length > 0) {
+        mainColumnFullContainers[0].remove()
+    }
+}
+
+function closeEddingForms() {
+//Находим все открытые окошки с формами
+    let editContainers = document.querySelectorAll('div.apartment div.animate-height')
+
+    //Закрываем все открытые окошки с формами
+    if (editContainers.length > 0) {
+        editContainers.forEach(element => {
+            element.className = 'animate-height-none'
+            // element.remove()
+        })
+    }
+}
+
+function deleteElementById(elementId) {
+    let otherCloseButton = document.getElementById(elementId)
+    if (otherCloseButton) {
+        otherCloseButton.remove()
+    }
 }

@@ -1,3 +1,4 @@
+var formDataPhotos = new FormData;
 //Свормировать страницу со списком всех объектов
 function createAllApartmentsPage() {
     callForm('/info-form')
@@ -15,6 +16,16 @@ function callForm(url) {
     getForm(url)
 }
 
+function createAddingForm() {
+    removeOtherForm()
+    let centerAddingContainer = document.createElement('div')
+    centerAddingContainer.id = 'centerAddingContainer'
+    document.getElementById('mainColumn').append(centerAddingContainer)
+    pasteForm('/adding-form', 'centerAddingContainer')
+    // Вызов функции с указанием селектора и времени ожидания
+    waitForPhotoSpaceToDisplay('#addImages', 100);
+}
+
 //Получить форму по URL контроллера HtmlFormController
 function getForm(url) {
     let xhr = new XMLHttpRequest()  // Создаём локальную переменную XHR, которая будет объектом XMLHttpRequest
@@ -26,17 +37,98 @@ function getForm(url) {
     xhr.send()  // Инициирует запрос. Посылаем запрос на сервер.
 }
 
+//Получить форму по URL контроллера HtmlFormController и вставить в элемент с id = elementId
+function pasteForm(url, elementId) {
+    let xhr = new XMLHttpRequest()  // Создаём локальную переменную XHR, которая будет объектом XMLHttpRequest
+    xhr.open('GET', url)     // Задаём метод запроса и URL  запроса
+    xhr.onload = function () {
+        // Используем обработчик событий onload, чтобы поймать ответ сервера XMLHttpRequest
+        document.getElementById(elementId).innerHTML = xhr.response
+    }
+    xhr.send()  // Инициирует запрос. Посылаем запрос на сервер.
+}
+
+//Ждет пока появится input добавления фото и начинает сделить когда на этот input нажмут
+function waitForPhotoSpaceToDisplay(selector, time) {
+
+    if (document.querySelector(selector) != null) {
+        let inputPhotosButton = document.querySelector(selector)
+        let previewPhotosSpace = document.getElementById('previewImages')
+        // Элемент найден, можно начинать с ним работать
+        document.querySelector(selector).addEventListener('change', function() {
+            console.log("Событие change произошло!");
+            // удаляем все ранее созданные элементы с изображениями
+            while (previewPhotosSpace.firstChild) {
+                previewPhotosSpace.removeChild(previewPhotosSpace.firstChild);
+            }
+
+            // получаем выбранные изображения
+            const files = inputPhotosButton.files;
+
+            let i = 0
+            // создаем элементы с превью изображений
+            for (const file of files) {
+                formDataPhotos.append('image_' + i, file);
+                i++
+                const img = document.createElement("img");
+                img.className = 'photoElements'
+                img.src = URL.createObjectURL(file);
+                previewPhotosSpace.appendChild(img);
+            }
+        });
+        return;
+    } else {
+        setTimeout(function() {
+            waitForPhotoSpaceToDisplay(selector, time);
+        }, time);
+    }
+}
+
+// function findPhotoPlace() {
+//     let inputPhotosButton = document.getElementById('addImages')
+//     let previewPhotosSpace = document.getElementById('previewImages')
+//
+//     console.log("Начинаем слушац")
+//     inputPhotosButton.addEventListener("change", () => {
+//         console.log("Событие change произошло!");
+//         // удаляем все ранее созданные элементы с изображениями
+//         while (previewPhotosSpace.firstChild) {
+//             previewPhotosSpace.removeChild(previewPhotosSpace.firstChild);
+//         }
+//
+//         // получаем выбранные изображения
+//         const files = inputPhotosButton.files;
+//
+//         // создаем элементы с превью изображений
+//         for (const file of files) {
+//             const img = document.createElement("img");
+//             img.className = 'photoElements'
+//             img.src = URL.createObjectURL(file);
+//             previewPhotosSpace.appendChild(img);
+//         }
+//     });
+// }
+
+function getFormAndPrependTo(url, element) {
+    let xhr = new XMLHttpRequest()  // Создаём локальную переменную XHR, которая будет объектом XMLHttpRequest
+    xhr.open('GET', url)     // Задаём метод запроса и URL  запроса
+    xhr.onload = function () {
+        // Используем обработчик событий onload, чтобы поймать ответ сервера XMLHttpRequest
+        element.innerHTML = xhr.response  // Содержимое ответа, помещаем внутрь элемент "body"
+    }
+    xhr.send()  // Инициирует запрос. Посылаем запрос на сервер.
+}
+
 //Удалить все формы
 function removeOtherForm() {
-    let addingForm = document.getElementById("addingFormContainer")
-    let filterForm = document.getElementById("filters")
-
-    if (addingForm !== null) {
-        addingForm.remove()
-    }
-    if (filterForm !== null) {
-        filterForm.remove()
-    }
+        [
+            'centerAddingContainer', 'filters', 'info', 'container'
+        ].forEach(formId => {
+        let form = document.getElementById(formId)
+        if (form !== null) {
+            form.remove()
+        }
+    })
 }
 
 //Удалить все элементы с классом 'className'
