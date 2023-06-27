@@ -34,6 +34,7 @@
 .iconButton {
     display: block;
     width: 50px;
+    height: 50px;
     text-align: center;
     text-decoration: none;
     padding: var(--primary-paddings);
@@ -48,15 +49,29 @@
 .iconButton .icon:hover {
     width: var(--menu-icon-medium-size);
     height: var(--menu-icon-medium-size);
-    transition-duration: .8s;
+    transition-duration: var(--animation-time);
     /*box-shadow: 5px 5px 5px var(--primary-negative-text-color);*/
 }
 
 .iconButton .icon:not(:hover) {
     width: var(--menu-icon-small-size);
     height: var(--menu-icon-small-size);
-    transition-duration: .8s;
+    transition-duration: var(--animation-time);
     /*box-shadow: 5px 5px 5px var(--primary-negative-text-color);*/
+}
+
+.iconPhotoButton {
+    display: block;
+    height: 24px;
+    text-align: center;
+    text-decoration: none;
+    padding: var(--primary-paddings);
+    border-radius: var(--primary-border-radius);
+    background-color: var(--primary-button-background-color);
+    color: var(--light-text-color);
+    font-family: var(--primary-font-family);
+    border: var(--primary-border-none-solid);
+    margin-right: var(--small-inset-pxl);
 }
 
 #info {
@@ -95,7 +110,7 @@
 
 .apartment {
     font-family: var(--primary-font-family);
-    width: 80%;
+    width: 90%;
     background: var(--gray-background-color);
     border-radius: var(--primary-border-radius);
     margin-bottom: var(--small-inset-pxl);
@@ -128,4 +143,31 @@
 
 .name {
     width: 35%;
+}
+
+.animate-height {
+    height: 0; /* Установите начальную высоту в 0 */
+    animation: grow var(--animation-time) ease-in-out forwards; /* Определите вашу анимацию */
+}
+
+.animate-height-none {
+    animation: grow-none var(--animation-time) ease-in-out forwards; /* Определите вашу анимацию */
+}
+
+@keyframes grow {
+    from {
+        height: 0; /* Начальная высота */
+    }
+    to {
+        height: var(--adding-form-height); /* Конечная высота */
+    }
+}
+
+@keyframes grow-none {
+    from {
+        height: var(--adding-form-height); /* Начальная высота */
+    }
+    to {
+        height: 0; /* Конечная высота */
+    }
 }
