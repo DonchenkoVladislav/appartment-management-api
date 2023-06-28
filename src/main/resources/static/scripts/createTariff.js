@@ -1,7 +1,6 @@
-
 function createTariff() {
 
-    if (document.getElementsByClassName("tariff").length < 8) {
+    if (document.getElementsByClassName("tariff").length < 20) {
         var newTariff = document.createElement('div')
         newTariff.innerHTML =
             "                        <div draggable=\"true\" class=\"descriptionElements tariff\">\n" +
@@ -32,8 +31,8 @@ function createTariff() {
             "                            </div>\n" +
             "                        </div>\n"
 
-        document.getElementById("tariffContainer").prepend(newTariff)
+        document.getElementById("tafiffList").prepend(newTariff)
     } else {
-        alert("Можно создать только 9 тарифов")
+        alert("Можно создать только 20 тарифов")
     }
 }
