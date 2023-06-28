@@ -52,4 +52,10 @@ public class ApartmentsController {
        return apartmentsService.getApartment(id);
     }
 
+    @PutMapping("/edit")
+    public String edit(@RequestParam(defaultValue = "0") Long id, @RequestBody ApartmentInfo requestBody){
+        apartmentsService.edit(id, requestBody);
+        return "main0";
+    }
+
 }
