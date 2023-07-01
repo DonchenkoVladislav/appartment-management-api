@@ -47,11 +47,6 @@ public class ApartmentsController {
         return "main";
     }
 
-    @GetMapping("/edit")
-    public @ResponseBody ApartmentInfo editApartmentInfo(@RequestParam(defaultValue = "0") Long id){
-       return apartmentsService.getApartment(id);
-    }
-
     @PutMapping("/edit")
     public String edit(@RequestParam(defaultValue = "0") Long id, @RequestBody ApartmentInfo requestBody){
         apartmentsService.edit(id, requestBody);
