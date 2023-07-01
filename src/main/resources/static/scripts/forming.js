@@ -84,31 +84,6 @@ function waitForPhotoSpaceToDisplay(selector, time) {
     }
 }
 
-// function findPhotoPlace() {
-//     let inputPhotosButton = document.getElementById('addImages')
-//     let previewPhotosSpace = document.getElementById('previewImages')
-//
-//     console.log("Начинаем слушац")
-//     inputPhotosButton.addEventListener("change", () => {
-//         console.log("Событие change произошло!");
-//         // удаляем все ранее созданные элементы с изображениями
-//         while (previewPhotosSpace.firstChild) {
-//             previewPhotosSpace.removeChild(previewPhotosSpace.firstChild);
-//         }
-//
-//         // получаем выбранные изображения
-//         const files = inputPhotosButton.files;
-//
-//         // создаем элементы с превью изображений
-//         for (const file of files) {
-//             const img = document.createElement("img");
-//             img.className = 'photoElements'
-//             img.src = URL.createObjectURL(file);
-//             previewPhotosSpace.appendChild(img);
-//         }
-//     });
-// }
-
 function getFormAndPrependTo(url, element) {
     let xhr = new XMLHttpRequest()  // Создаём локальную переменную XHR, которая будет объектом XMLHttpRequest
     xhr.open('GET', url)     // Задаём метод запроса и URL  запроса

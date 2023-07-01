@@ -103,7 +103,7 @@ function getJson(url, name, city) {
             })
             document.getElementById('totalSpace').innerHTML = totalSpace
             document.getElementById('totalApartments').innerHTML = countApartments
-            document.getElementById('averagePrice').innerHTML = totalPrise / countApartments
+            document.getElementById('averagePrice').innerHTML = Math.round(totalPrise / countApartments)
         },
         error: function (jqXHR, textStatus, errorThrown) {
             // Обработка ошибки
