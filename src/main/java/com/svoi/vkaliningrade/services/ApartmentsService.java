@@ -26,6 +26,38 @@ public class ApartmentsService {
     @Autowired
     private TarffRepositiry tarffRepositiry;
 
+    //Пример билдера
+    private List<ApartmentShortInfo> getAllApartmentShortInfo() {
+        List<ApartmentShortInfo> shortInfoList = new ArrayList<>();
+        apartmentRepository.findAll().forEach(apartment -> shortInfoList.add(
+                        ApartmentShortInfo.builder()
+                                .id(apartment.getId())
+                                .name(apartment.getName())
+                                .city(apartment.getCity())
+                                .space(apartment.getSpace())
+                                .adult(apartment.getAdult())
+                                .children(apartment.getChildren())
+                                .fromDay(apartment.getFromDay())
+                                .summary(apartment.getSummary())
+                                .build()
+                )
+        );
+
+        return shortInfoList;
+    }
+
+    private List<ApartmentDescription> getAllApartmentsList() {
+        List<ApartmentDescription> list = new ArrayList<>();
+        apartmentRepository.findAll().forEach(list::add);
+        return list;
+    }
+
+    private List<Tariff> getAllTariffList() {
+        List<Tariff> list = new ArrayList<>();
+        tarffRepositiry.findAll().forEach(list::add);
+        return list;
+    }
+
     //Сохранить информацию об объекте в БД
     public void save(ApartmentInfo body) {
         ApartmentDescription description = new ApartmentDescription(body);
@@ -76,44 +108,12 @@ public class ApartmentsService {
         return names;
     }
 
-    //Пример билдера
-    private List<ApartmentShortInfo> getAllApartmentShortInfo() {
-        List<ApartmentShortInfo> shortInfoList = new ArrayList<>();
-        apartmentRepository.findAll().forEach(apartment -> shortInfoList.add(
-                        ApartmentShortInfo.builder()
-                                .id(apartment.getId())
-                                .name(apartment.getName())
-                                .city(apartment.getCity())
-                                .space(apartment.getSpace())
-                                .adult(apartment.getAdult())
-                                .children(apartment.getChildren())
-                                .fromDay(apartment.getFromDay())
-                                .summary(apartment.getSummary())
-                                .build()
-                )
-        );
-
-        return shortInfoList;
-    }
-
-
-    private List<ApartmentDescription> getAllApartmentsList() {
-        List<ApartmentDescription> list = new ArrayList<>();
-        apartmentRepository.findAll().forEach(list::add);
-        return list;
-    }
-
-    private List<Tariff> getAllTariffList() {
-        List<Tariff> list = new ArrayList<>();
-        tarffRepositiry.findAll().forEach(list::add);
-        return list;
-    }
 
     public void delete(Long id) {
         apartmentRepository.deleteById(id);
         getAllTariffList().forEach(
                 tariff -> {
-                    if (id.equals((tariff.getAppartmentId()))){
+                    if (id.equals((tariff.getAppartmentId()))) {
                         tarffRepositiry.delete(tariff);
                     }
                 }
@@ -129,10 +129,10 @@ public class ApartmentsService {
             if (id.equals(tariff.getAppartmentId())) {
                 findTariff.add(
                         TariffsInfo.builder()
-                        .startDate(tariff.getStartDate())
-                        .endDate(tariff.getEndDate())
-                        .summaryTariff(tariff.getSummaryTariff())
-                        .build()
+                                .startDate(tariff.getStartDate())
+                                .endDate(tariff.getEndDate())
+                                .summaryTariff(tariff.getSummaryTariff())
+                                .build()
                 );
             }
         }
@@ -155,5 +155,64 @@ public class ApartmentsService {
                 .tariffs(findTariff)
                 .build();
 
+    }
+
+    public void edit(Long id, ApartmentInfo requestBody) {
+        // Поиск объекта в БД по id
+        ApartmentDescription description = apartmentRepository.findById(id).get();
+
+        // Замена данных объекта данными из формы
+        description.setDescription(requestBody.getDescription());
+        description.setView(requestBody.getView());
+        description.setName(requestBody.getName());
+        description.setCity(requestBody.getCity());
+        description.setCoordinates(requestBody.getCoordinates());
+        description.setSpace(requestBody.getSpace());
+        description.setAdult(requestBody.getAdult());
+        description.setChildren(requestBody.getChildren());
+        description.setFromDay(requestBody.getFrom());
+        description.setSummary(requestBody.getSummary());
+        description.setBeds(requestBody.getBeds());
+        description.setConveniences(requestBody.getConveniences());
+        description.setServices(requestBody.getServices());
+
+        // Сохранение данных в базу после редактирования(без тарифов)
+        apartmentRepository.save(description);
+
+
+
+        //Создаем список(List) всех тарифов -> превращаем в поток(Stream) -> фильтруем(filter) тарифы у которых
+        //ApartmentId совпадает id из параметров -> превращаем стрим(Stream) обратно в список(List)
+
+        List<Tariff> readyToDeleteTariffs = getAllTariffList().stream()
+                .filter(tariff -> tariff.getAppartmentId().equals(id))
+                .toList();
+
+        // Удаляем из БД каждый элемент из ранее созданного списка
+        readyToDeleteTariffs.forEach(tariff -> tarffRepositiry.delete(tariff));
+
+        // Получаем список тарифов из формы на странице ->  -> сохраняем в БД
+        // С помощью цикла forEach на каждой итерации создаем объект типа "Tariff"
+        requestBody.getTariffs().forEach(currentTariff -> {
+            Tariff saveTariff = new Tariff(description.getId(), currentTariff);
+            tarffRepositiry.save(saveTariff);
+        });
+
+
+
+
+//        for (int i = 0; i < requestBody.getTariffs().size(); i++) {
+//        }
+//
+//        getAllTariffList().forEach(
+//                tariff -> {
+//                    if (id.equals((tariff.getAppartmentId()))) {
+//                        tariff.setSummaryTariff();
+//                        tariff.setEndDate();
+//                        tariff.setEndDate();
+//                        tarffRepositiry.save(tariff);
+//                    }
+//                }
+//        );
     }
 }
