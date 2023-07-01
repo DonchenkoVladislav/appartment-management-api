@@ -178,26 +178,26 @@ function createApartmetnItem(item) {
         '<p class="title">' + item.name + '</p>'
 
     let space = document.createElement('div')
-    space.className = 'itemsElement'
+    space.className = 'itemsElement numBlocks'
     space.innerHTML =
         '<img width="24" height="24" class="icon" src="icons/space.svg" alt="icon">' +
         '<p class="title">' + item.space + '</p>' +
         '<p class="title">м²</p>'
 
     let city = document.createElement('div')
-    city.className = 'itemsElement'
+    city.className = 'itemsElement cities'
     city.innerHTML =
         // '<img width="24" height="24" class="icon" src="icons/apartment.svg" alt="icon">' +
         '<p class="title">' + item.city + '</p>'
 
     let adult = document.createElement('div')
-    adult.className = 'itemsElement'
+    adult.className = 'itemsElement people'
     adult.innerHTML =
         '<img width="24" height="24" class="icon" src="icons/person.svg" alt="icon">' +
         '<p class="title">' + item.adult + ' / ' + item.children + '</p>'
 
     let summary = document.createElement('div')
-    summary.className = 'itemsElement'
+    summary.className = 'itemsElement numBlocks'
     summary.innerHTML =
         '<img width="24" height="24" class="icon" src="icons/money.svg" alt="icon">' +
         '<p class="title">' + item.summary + '</p>' +

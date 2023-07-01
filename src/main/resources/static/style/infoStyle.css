@@ -120,7 +120,9 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    padding: var(--primary-paddings);
+    padding-left: var(--primary-paddings);
+    padding-right: var(--primary-paddings);
+    flex-wrap: wrap;
 }
 
 .apartmentRow p {
@@ -130,6 +132,11 @@
 
 .apartmentRow img {
     align-self: center;
+}
+
+.apartmentRow div, .apartmentRow button {
+    margin-top: var(--small-inset-pxl);
+    margin-bottom: var(--small-inset-pxl);
 }
 
 .itemsElement {
@@ -143,6 +150,18 @@
 
 .name {
     width: 35%;
+}
+
+.cities{
+    width: 115px;
+}
+
+.people {
+    width: 80px;
+}
+
+.numBlocks {
+    width: 95px;
 }
 
 .animate-height {
