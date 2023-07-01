@@ -1,9 +1,10 @@
 #filters {
     display: flex;
-    width: 100%;
-    height: 5vh;
-    padding: var(--primary-indent);
-    justify-content: start;
+    width: var(--main-wight);
+    /*height: 5vh;*/
+    /*padding: var(--primary-indent);*/
+    justify-content: end;
+    align-items: center;
 }
 
 #filterSearch, #filterCity {
@@ -12,9 +13,13 @@
 }
 
 #filterInput, #filterCityInput {
-    width: var(--primary-input-width);
+    width: 15vw;
+    min-width: 150px;
     border: var(--primary-border-solid);
     border-radius: var(--primary-border-radius);
+    background: white;
+    font-size: var(--standart-font-size);
+    padding: 4px;
 }
 
 .filterButton {
@@ -110,7 +115,7 @@
 
 .apartment {
     font-family: var(--primary-font-family);
-    width: 90%;
+    width: var(--main-wight);
     background: var(--gray-background-color);
     border-radius: var(--primary-border-radius);
     margin-bottom: var(--small-inset-pxl);

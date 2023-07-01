@@ -1,3 +1,7 @@
+window.onload = function() {
+    setTimeout(() => createAllApartmentsPage(), 200)
+}
+
 var formDataPhotos = new FormData;
 //Свормировать страницу со списком всех объектов
 function createAllApartmentsPage() {
