@@ -1,14 +1,14 @@
 package com.svoi.vkaliningrade.Models;
 
 import com.svoi.vkaliningrade.dto.ApartmentInfo;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,6 +22,10 @@ public class ApartmentDescription {
     private Long id;
     private String description, view, name, city, coordinates, beds, conveniences, services;
     private int space, adult, children, fromDay, summary;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
+    mappedBy = "apartmentDescription")
+    private List<Image> images = new ArrayList<>();
 
     public ApartmentDescription() {
     }
