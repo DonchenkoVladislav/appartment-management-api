@@ -26,6 +26,12 @@ function createAddingForm() {
     centerAddingContainer.id = 'centerAddingContainer'
     document.getElementById('mainColumn').append(centerAddingContainer)
     pasteForm('/adding-form', 'centerAddingContainer')
+
+    gSave('POST', '/save', 0)
+    // $(document).on('click', '#saveButton', function () {
+    //     save('POST', '/save');
+    // });
+
     // Вызов функции с указанием селектора и времени ожидания
     waitForPhotoSpaceToDisplay('#addImages', 100);
 }

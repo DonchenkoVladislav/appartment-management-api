@@ -1,4 +1,4 @@
-function save() {
+function save(method, url) {
 
     let tariffList = new Array()
 
@@ -32,8 +32,8 @@ function save() {
     if (allrequiredFieldsIsFilled) {
         //Отправка нового объекта на сервер
         $.ajax({
-            type: 'POST',
-            url: '/save',
+            type: method,
+            url: url,
             dataType: 'json',
             processData: false,
             contentType: 'application/json; charset=utf-8',
@@ -80,6 +80,10 @@ function save() {
         alert("Заполнены не все обязательные поля")
     }
 
+}
+
+function editElementPut(id) {
+    save('PUT', '/edit?' + id)
 }
 
 function getJson(url, name, city) {
@@ -186,7 +190,8 @@ function editElement(id) {
             //Заполняем все поля формы mainColumnFullContainers
             setTimeout(function () {
                     getFormAndPrependTo(
-                        '/adding-form', document.getElementsByClassName('animate-height')[0])
+                        '/adding-form', document.getElementsByClassName('animate-height')[0]
+                    )
                 },
                 800)
             waitLoadElementByNameAndFillValue('input_name', edit.name)
@@ -202,13 +207,18 @@ function editElement(id) {
             waitLoadElementByNameAndFillValue('input_conveniences', edit.conveniences)
             waitLoadElementByNameAndFillValue('input_services', edit.services)
             createTariffsInAddingFrom('tariff', edit.tariffs)
+            gSave('PUT', '/edit?id=', Math.round(edit.id))
+            // $(document).on('click', '#saveButton', function () {
+            //     save('PUT', '/edit?' + item.id)
+            // });
+            // setTimeout(() => document.getElementById('saveButton').setAttribute('onclick', 'save("PUT", "/edit?"' + item.id + ')'), 1000)
+            // waitLoadElementByIdAndSetAtribute('saveButton', 'onclick', 'save("PUT", "/edit?"' + item.id + ')')
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
             // Обработка ошибки
         }
     });
-
-
 
     // Вызов функции с указанием селектора и времени ожидания
     // Добавление фотографий

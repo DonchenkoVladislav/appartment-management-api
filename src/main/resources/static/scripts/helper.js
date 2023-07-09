@@ -13,6 +13,30 @@ function getAllApartmentNames() {
         });
 }
 
+function gSave(methog, url, id) {
+    console.log("Метод gSave запустился")
+    function checkElement() {
+        let element = document.getElementById('saveButton');
+        console.log("Метод gSave продолжился")
+        if (element) {
+            console.log("Элемент saveButton найден");
+            // Останавливаем выполнение setInterval
+            clearInterval(intervalId);
+            // Выполняем действия с элементом
+            $('#saveButton').click(function () {
+                console.log('GHbdtn');
+                if (id !== 0) {
+                    save(methog, url + id)
+                } else {
+                    save(methog, url)
+                }
+            });
+        }
+    }
+    // Проверяем наличие элемента с таймаутом timeout
+    let intervalId = setInterval(checkElement, 200);
+}
+
 function waitLoadElementByNameAndFillValue(name, value) {
     function checkElement() {
         let element = document.getElementsByName(name)[0];
@@ -22,6 +46,21 @@ function waitLoadElementByNameAndFillValue(name, value) {
             clearInterval(intervalId);
             // Выполняем действия с элементом
             element.value = value
+        }
+    }
+    // Проверяем наличие элемента с таймаутом timeout
+    let intervalId = setInterval(checkElement, 200);
+}
+
+function waitLoadElementByIdAndSetAtribute(elementId, qualifiedName, value) {
+    function checkElement() {
+        let element = document.getElementById(elementId);
+        if (element) {
+            console.log("Элемент найден " + elementId);
+            // Останавливаем выполнение setInterval
+            clearInterval(intervalId);
+            // Выполняем действия с элементом
+            element.setAttribute(qualifiedName, value)
         }
     }
     // Проверяем наличие элемента с таймаутом timeout

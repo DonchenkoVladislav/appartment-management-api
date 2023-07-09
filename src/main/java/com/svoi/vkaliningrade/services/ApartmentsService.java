@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import static com.svoi.vkaliningrade.CommonConstants.ALL_OBJECTS_TEXT;
@@ -159,7 +160,12 @@ public class ApartmentsService {
 
     public void edit(Long id, ApartmentInfo requestBody) {
         // Поиск объекта в БД по id
-        ApartmentDescription description = apartmentRepository.findById(id).get();
+        ApartmentDescription description = apartmentRepository.findById(id)
+                .orElseThrow(
+                        () -> new NoSuchElementException(String.format(
+                                "Объект с id '%s' не найден в базе", id)
+                        )
+                );
 
         // Замена данных объекта данными из формы
         description.setDescription(requestBody.getDescription());
@@ -180,7 +186,6 @@ public class ApartmentsService {
         apartmentRepository.save(description);
 
 
-
         //Создаем список(List) всех тарифов -> превращаем в поток(Stream) -> фильтруем(filter) тарифы у которых
         //ApartmentId совпадает id из параметров -> превращаем стрим(Stream) обратно в список(List)
 
@@ -197,8 +202,6 @@ public class ApartmentsService {
             Tariff saveTariff = new Tariff(description.getId(), currentTariff);
             tarffRepositiry.save(saveTariff);
         });
-
-
 
 
 //        for (int i = 0; i < requestBody.getTariffs().size(); i++) {
