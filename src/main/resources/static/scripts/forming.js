@@ -127,14 +127,14 @@ function createApartmetnItem(item) {
     let updateButton = document.createElement('button')
     updateButton.setAttribute('onclick', 'editElement(' + item.id + ')')
     updateButton.type = 'button'
-    updateButton.className = 'iconButton'
+    updateButton.className = 'iconButton nonMobileVisible'
     updateButton.innerHTML =
         '<img width="20" height="20" class="icon" src="icons/pencil.svg" alt="icon">'
 
     let calendarButton = document.createElement('button')
     calendarButton.onclick = ''
     calendarButton.type = 'button'
-    calendarButton.className = 'iconButton'
+    calendarButton.className = 'iconButton nonMobileVisible'
     calendarButton.innerHTML =
         '<img width="20" height="20" class="icon" src="icons/calendar.svg" alt="icon">'
 
@@ -142,7 +142,7 @@ function createApartmetnItem(item) {
     //Тут все нормально работает - ковычки не трогать
     deteteButton.setAttribute('onclick', 'deleteElement("delete", ' + item.id + ')')
     deteteButton.type = 'button'
-    deteteButton.className = 'iconButton'
+    deteteButton.className = 'iconButton nonMobileVisible'
     deteteButton.innerHTML =
         '<img width="20" height="20" class="icon" src="icons/trash.svg" alt="icon">'
 
@@ -163,7 +163,7 @@ function createApartmetnItem(item) {
         '<p class="title">' + item.name + '</p>'
 
     let space = document.createElement('div')
-    space.className = 'itemsElement numBlocks'
+    space.className = 'itemsElement numBlocks nonMobileVisible'
     space.innerHTML =
         '<img width="24" height="24" class="icon" src="icons/space.svg" alt="icon">' +
         '<p class="title">' + item.space + '</p>' +
@@ -176,7 +176,7 @@ function createApartmetnItem(item) {
         '<p class="title">' + item.city + '</p>'
 
     let adult = document.createElement('div')
-    adult.className = 'itemsElement people'
+    adult.className = 'itemsElement people nonMobileVisible'
     adult.innerHTML =
         '<img width="24" height="24" class="icon" src="icons/person.svg" alt="icon">' +
         '<p class="title">' + item.adult + ' / ' + item.children + '</p>'

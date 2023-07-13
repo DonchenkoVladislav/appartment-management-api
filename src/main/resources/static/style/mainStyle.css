@@ -51,48 +51,6 @@ body {
     height: 100vh;
 }
 
-.generalSeparate {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-}
-
-#mainColumn {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    width: var(--right-part-wight);
-}
-
-.mainColumnFullContainer {
-    /*margin-top: 5vh;*/
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    /*align-items: center;*/
-    width: 100%;
-}
-
-#menuBlock {
-    background: var(--menu-background-color);
-    border-radius: var(--menu-border-radius);
-    margin: var(--small-inset-pxl);
-    padding: var(--primary-paddings);
-    height: 60vh;
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.mainMenu {
-    width: var(--left-part-wight);
-    display: flex;
-    align-items: center;
-    min-width: 100px;
-}
-
 #menuBlock button {
     margin: 5px;
     display: flex;
@@ -337,12 +295,6 @@ display: flex;
     /*color: var(--primary-text-color);*/
 }
 
-.subtitle {
-    font-family: var(--primary-font-family);
-    font-size: var(--font-size-xx-large);
-    margin: var(--small-inset-pxl);
-}
-
 .flexParamInputEvently .title {
     /*color: var(--primary-text-color);*/
 }
@@ -358,7 +310,7 @@ span .niceInput {
 div.paramInput input, div.paramInput select {
     border: var(--primary-border-none-solid);
     border-radius: var(--primary-border-radius);
-    width: 100%;
+    width: 90%;
     font-size: var(--standart-font-size);
     outline: none;
     padding: 10px;
