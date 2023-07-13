@@ -206,6 +206,7 @@ function editElement(id) {
             waitLoadElementByNameAndFillValue('input_view', edit.view)
             waitLoadElementByNameAndFillValue('input_conveniences', edit.conveniences)
             waitLoadElementByNameAndFillValue('input_services', edit.services)
+            waitLoadElementByNameAndFillValue('input_description', edit.description)
             createTariffsInAddingFrom('tariff', edit.tariffs)
             gSave('PUT', '/edit?id=', Math.round(edit.id))
             // $(document).on('click', '#saveButton', function () {
