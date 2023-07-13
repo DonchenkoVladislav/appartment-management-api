@@ -116,7 +116,7 @@ function getJson(url, name, city) {
 }
 
 //Функция используется в forming.js. Не удалять
-function deleteElement(url, id) {
+function deleteObject(url, id) {
     return $.ajax({
         url: '/' + url + '?id=' + id,
         type: 'DELETE',
@@ -124,8 +124,10 @@ function deleteElement(url, id) {
             'Accept': 'application/json'
         },
         success: function () {
-            getAllApartmentNames()
-            getJson('/info', '', '-')
+            if (confirm("Удалить объект " + id + "?")) {
+                getAllApartmentNames()
+                getJson('/info', '', '-')
+            }
         },
         error: function (jqXHR, textStatus, errorThrown) {
             // Обработка ошибки
@@ -234,7 +236,7 @@ function stopEditing() {
 }
 
 function deleteEddingForms() {
-    //находим все формы, которая включит в себя все описание квартиры
+    //находим все формы, которая включают в себя все описание квартиры
     let mainColumnFullContainers = document.getElementsByClassName('mainColumnFullContainer')
     //Удаляем уже открытые формы
     if (mainColumnFullContainers.length > 0) {

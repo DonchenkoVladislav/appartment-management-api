@@ -140,7 +140,7 @@ function createApartmetnItem(item) {
 
     let deteteButton = document.createElement('button')
     //Тут все нормально работает - ковычки не трогать
-    deteteButton.setAttribute('onclick', 'deleteElement("delete", ' + item.id + ')')
+    deteteButton.setAttribute('onclick', 'deleteObject("delete", ' + item.id + ')')
     deteteButton.type = 'button'
     deteteButton.className = 'iconButton nonMobileVisible'
     deteteButton.innerHTML =
