@@ -1,34 +1,8 @@
 #filters {
     display: flex;
-    width: 100%;
-    height: 5vh;
-    padding: var(--primary-indent);
-    justify-content: start;
-}
-
-#filterSearch, #filterCity {
-    display: flex;
-    padding: var(--primary-paddings);
-}
-
-#filterInput, #filterCityInput {
-    width: var(--primary-input-width);
-    border: var(--primary-border-solid);
-    border-radius: var(--primary-border-radius);
-}
-
-.filterButton {
-    font-size: var(--standart-font-size);
-    font-family: var(--primary-font-family);
-    border: var(--primary-border-none-solid);
-    background: var(--primary-button-background-color);
-    color: var(--light-text-color);
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
+    width: var(--main-wight);
+    justify-content: end;
     align-items: center;
-    margin-left: var(--small-margin);
-    border-radius: var(--primary-border-radius);
 }
 
 .iconButton {
@@ -83,14 +57,7 @@
     justify-content: start;
 }
 
-.infoBlock {
-    display: block;
-    background: var(--gray-background-color);
-    border-radius: var(--primary-border-radius);
-    margin-left: 0;
-    margin-right: var(--primary-paddings);
-    padding: var(--primary-paddings);
-}
+
 
 .infoBlockTitle {
     color: var(--gray-text-color);
@@ -102,15 +69,15 @@
     flex-direction: row;
 }
 
-#container {
+#mainColumn {
     display: flex;
-    width: 100%;
     flex-direction: column;
+    width: 90vw;
 }
 
 .apartment {
     font-family: var(--primary-font-family);
-    width: 90%;
+    width: var(--main-wight);
     background: var(--gray-background-color);
     border-radius: var(--primary-border-radius);
     margin-bottom: var(--small-inset-pxl);
@@ -119,8 +86,11 @@
 .apartmentRow {
     display: flex;
     flex-direction: row;
+    justify-content: start;
     width: 100%;
-    padding: var(--primary-paddings);
+    padding-left: var(--primary-paddings);
+    padding-right: var(--primary-paddings);
+    flex-wrap: wrap;
 }
 
 .apartmentRow p {
@@ -132,6 +102,11 @@
     align-self: center;
 }
 
+.apartmentRow div, .apartmentRow button {
+    margin-top: var(--small-inset-pxl);
+    margin-bottom: var(--small-inset-pxl);
+}
+
 .itemsElement {
     display: flex;
     flex-direction: row;
@@ -139,10 +114,6 @@
     border-radius: var(--primary-border-radius);
     padding: var(--primary-paddings);
     margin-right: var(--small-inset-pxl);
-}
-
-.name {
-    width: 35%;
 }
 
 .animate-height {

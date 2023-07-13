@@ -1,25 +1,3 @@
-<div id="filters">
-    <div id="filterSearch">
-        <input type="text" list="allNames" id="filterInput">
-        <datalist id="allNames"></datalist>
-        <!--        <button class="filterButton" onclick="updateAllApartmentsPageWithFiltersName()">-->
-<!--            <img width="24" height="24" class="icon" src="icons/zoom.svg" alt="icon">-->
-<!--        </button>-->
-    </div>
-    <div id="filterCity">
-        <select id="filterCityInput" class="niceInput">
-            <option>-</option>
-            <option>Зеленоградск</option>
-            <option>Калининград</option>
-            <option>Светлогорск</option>
-            <option>Пионерский</option>
-            <option>Янтарный</option>
-        </select>
-        <button class="filterButton" onclick="search()">
-            <img width="24" height="24" class="icon" src="icons/zoom.svg" alt="icon">
-        </button>
-    </div>
-</div>
 <div id="info">
     <div class="infoBlock" style="background: #d9fad7;">
         <div class="infoBlockTitle">
@@ -45,6 +23,30 @@
             <p id="averagePrice" class="subtitle"></p>
         </div>
     </div>
+</div>
+<div id="filters">
+    <div id="filterSearch">
+        <img width="32" height="32" class="icon" src="icons/pen.svg" alt="icon">
+        <input onfocus="this.value=''" type="text" list="allNames" id="filterInput">
+        <datalist id="allNames"></datalist>
+        <!--        <button class="filterButton" onclick="updateAllApartmentsPageWithFiltersName()">-->
+<!--            <img width="24" height="24" class="icon" src="icons/zoom.svg" alt="icon">-->
+<!--        </button>-->
+    </div>
+    <div id="filterCity">
+        <img width="32" height="32" class="icon" src="icons/city.svg" alt="icon">
+        <select id="filterCityInput" class="niceInput">
+            <option>-</option>
+            <option>Зеленоградск</option>
+            <option>Калининград</option>
+            <option>Светлогорск</option>
+            <option>Пионерский</option>
+            <option>Янтарный</option>
+        </select>
+    </div>
+    <button class="filterButton" onclick="search()">
+        <img width="24" height="24" class="icon" src="icons/zoom.svg" alt="icon">
+    </button>
 </div>
 <div id="container">
 

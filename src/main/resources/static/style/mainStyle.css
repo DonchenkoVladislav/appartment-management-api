@@ -36,6 +36,8 @@
     --animation-time: .6s;
 
     --adding-form-height: 687px;
+
+    --main-wight: 90%;
 }
 
 h2, h3 {
@@ -47,47 +49,6 @@ h2, h3 {
 body {
     margin: 0;
     height: 100vh;
-}
-
-.generalSeparate {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-}
-
-#mainColumn {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    width: var(--right-part-wight);
-}
-
-.mainColumnFullContainer {
-    /*margin-top: 5vh;*/
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    /*align-items: center;*/
-    width: 100%;
-}
-
-#menuBlock {
-    background: var(--menu-background-color);
-    border-radius: var(--menu-border-radius);
-    margin: var(--small-inset-pxl);
-    padding: var(--primary-paddings);
-    height: 60vh;
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.mainMenu {
-    width: var(--left-part-wight);
-    display: flex;
-    align-items: center;
 }
 
 #menuBlock button {
@@ -334,12 +295,6 @@ display: flex;
     /*color: var(--primary-text-color);*/
 }
 
-.subtitle {
-    font-family: var(--primary-font-family);
-    font-size: var(--font-size-xx-large);
-    margin: var(--small-inset-pxl);
-}
-
 .flexParamInputEvently .title {
     /*color: var(--primary-text-color);*/
 }
@@ -355,7 +310,7 @@ span .niceInput {
 div.paramInput input, div.paramInput select {
     border: var(--primary-border-none-solid);
     border-radius: var(--primary-border-radius);
-    width: 100%;
+    width: 90%;
     font-size: var(--standart-font-size);
     outline: none;
     padding: 10px;
@@ -367,12 +322,14 @@ div.paramInput textarea {
     margin-top: var(--primary-indent);
     border: var(--primary-border-none-solid);
     border-radius: var(--primary-border-radius);
-    width: 100%;
-    max-width: 38vw; /*Не знаю почему тут надо 38, а не 40*/
-    max-height: 28vh;
+    width: 96%;
+    height: 275px;
     outline: none;
     font-family: var(--primary-font-family);
     background: var(--light-backgroung);
+    resize: none;
+    padding: var(--small-inset-pxl);
+    font-size: var(--standart-font-size);
 }
 
 div.paramInput select {
@@ -432,6 +389,7 @@ div.paramInput select {
     overflow: auto;
     padding: var(--small-inset-pxl);
     width: 93%;
+    height: 67%;
 }
 
 .photoElements {

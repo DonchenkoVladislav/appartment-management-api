@@ -1,4 +1,4 @@
-function save() {
+function save(method, url) {
 
     let tariffList = new Array()
 
@@ -32,8 +32,8 @@ function save() {
     if (allrequiredFieldsIsFilled) {
         //Отправка нового объекта на сервер
         $.ajax({
-            type: 'POST',
-            url: '/save',
+            type: method,
+            url: url,
             dataType: 'json',
             processData: false,
             contentType: 'application/json; charset=utf-8',
@@ -82,6 +82,10 @@ function save() {
 
 }
 
+function editElementPut(id) {
+    save('PUT', '/edit?' + id)
+}
+
 function getJson(url, name, city) {
     //Получение объекта для формирования списка со всеми записями
     $.ajax({
@@ -103,7 +107,7 @@ function getJson(url, name, city) {
             })
             document.getElementById('totalSpace').innerHTML = totalSpace
             document.getElementById('totalApartments').innerHTML = countApartments
-            document.getElementById('averagePrice').innerHTML = totalPrise / countApartments
+            document.getElementById('averagePrice').innerHTML = Math.round(totalPrise / countApartments)
         },
         error: function (jqXHR, textStatus, errorThrown) {
             // Обработка ошибки
@@ -112,7 +116,7 @@ function getJson(url, name, city) {
 }
 
 //Функция используется в forming.js. Не удалять
-function deleteElement(url, id) {
+function deleteObject(url, id) {
     return $.ajax({
         url: '/' + url + '?id=' + id,
         type: 'DELETE',
@@ -120,8 +124,10 @@ function deleteElement(url, id) {
             'Accept': 'application/json'
         },
         success: function () {
-            getAllApartmentNames()
-            getJson('/info', '', '-')
+            if (confirm("Удалить объект " + id + "?")) {
+                getAllApartmentNames()
+                getJson('/info', '', '-')
+            }
         },
         error: function (jqXHR, textStatus, errorThrown) {
             // Обработка ошибки
@@ -186,7 +192,8 @@ function editElement(id) {
             //Заполняем все поля формы mainColumnFullContainers
             setTimeout(function () {
                     getFormAndPrependTo(
-                        '/adding-form', document.getElementsByClassName('animate-height')[0])
+                        '/adding-form', document.getElementsByClassName('animate-height')[0]
+                    )
                 },
                 800)
             waitLoadElementByNameAndFillValue('input_name', edit.name)
@@ -201,14 +208,20 @@ function editElement(id) {
             waitLoadElementByNameAndFillValue('input_view', edit.view)
             waitLoadElementByNameAndFillValue('input_conveniences', edit.conveniences)
             waitLoadElementByNameAndFillValue('input_services', edit.services)
+            waitLoadElementByNameAndFillValue('input_description', edit.description)
             createTariffsInAddingFrom('tariff', edit.tariffs)
+            gSave('PUT', '/edit?id=', Math.round(edit.id))
+            // $(document).on('click', '#saveButton', function () {
+            //     save('PUT', '/edit?' + item.id)
+            // });
+            // setTimeout(() => document.getElementById('saveButton').setAttribute('onclick', 'save("PUT", "/edit?"' + item.id + ')'), 1000)
+            // waitLoadElementByIdAndSetAtribute('saveButton', 'onclick', 'save("PUT", "/edit?"' + item.id + ')')
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
             // Обработка ошибки
         }
     });
-
-
 
     // Вызов функции с указанием селектора и времени ожидания
     // Добавление фотографий
@@ -223,7 +236,7 @@ function stopEditing() {
 }
 
 function deleteEddingForms() {
-    //находим все формы, которая включит в себя все описание квартиры
+    //находим все формы, которая включают в себя все описание квартиры
     let mainColumnFullContainers = document.getElementsByClassName('mainColumnFullContainer')
     //Удаляем уже открытые формы
     if (mainColumnFullContainers.length > 0) {

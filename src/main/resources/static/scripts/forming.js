@@ -1,3 +1,7 @@
+window.onload = function() {
+    setTimeout(() => createAllApartmentsPage(), 200)
+}
+
 var formDataPhotos = new FormData;
 //Свормировать страницу со списком всех объектов
 function createAllApartmentsPage() {
@@ -22,6 +26,12 @@ function createAddingForm() {
     centerAddingContainer.id = 'centerAddingContainer'
     document.getElementById('mainColumn').append(centerAddingContainer)
     pasteForm('/adding-form', 'centerAddingContainer')
+
+    gSave('POST', '/save', 0)
+    // $(document).on('click', '#saveButton', function () {
+    //     save('POST', '/save');
+    // });
+
     // Вызов функции с указанием селектора и времени ожидания
     waitForPhotoSpaceToDisplay('#addImages', 100);
 }
@@ -84,31 +94,6 @@ function waitForPhotoSpaceToDisplay(selector, time) {
     }
 }
 
-// function findPhotoPlace() {
-//     let inputPhotosButton = document.getElementById('addImages')
-//     let previewPhotosSpace = document.getElementById('previewImages')
-//
-//     console.log("Начинаем слушац")
-//     inputPhotosButton.addEventListener("change", () => {
-//         console.log("Событие change произошло!");
-//         // удаляем все ранее созданные элементы с изображениями
-//         while (previewPhotosSpace.firstChild) {
-//             previewPhotosSpace.removeChild(previewPhotosSpace.firstChild);
-//         }
-//
-//         // получаем выбранные изображения
-//         const files = inputPhotosButton.files;
-//
-//         // создаем элементы с превью изображений
-//         for (const file of files) {
-//             const img = document.createElement("img");
-//             img.className = 'photoElements'
-//             img.src = URL.createObjectURL(file);
-//             previewPhotosSpace.appendChild(img);
-//         }
-//     });
-// }
-
 function getFormAndPrependTo(url, element) {
     let xhr = new XMLHttpRequest()  // Создаём локальную переменную XHR, которая будет объектом XMLHttpRequest
     xhr.open('GET', url)     // Задаём метод запроса и URL  запроса
@@ -142,22 +127,22 @@ function createApartmetnItem(item) {
     let updateButton = document.createElement('button')
     updateButton.setAttribute('onclick', 'editElement(' + item.id + ')')
     updateButton.type = 'button'
-    updateButton.className = 'iconButton'
+    updateButton.className = 'iconButton nonMobileVisible'
     updateButton.innerHTML =
         '<img width="20" height="20" class="icon" src="icons/pencil.svg" alt="icon">'
 
     let calendarButton = document.createElement('button')
     calendarButton.onclick = ''
     calendarButton.type = 'button'
-    calendarButton.className = 'iconButton'
+    calendarButton.className = 'iconButton nonMobileVisible'
     calendarButton.innerHTML =
         '<img width="20" height="20" class="icon" src="icons/calendar.svg" alt="icon">'
 
     let deteteButton = document.createElement('button')
     //Тут все нормально работает - ковычки не трогать
-    deteteButton.setAttribute('onclick', 'deleteElement("delete", ' + item.id + ')')
+    deteteButton.setAttribute('onclick', 'deleteObject("delete", ' + item.id + ')')
     deteteButton.type = 'button'
-    deteteButton.className = 'iconButton'
+    deteteButton.className = 'iconButton nonMobileVisible'
     deteteButton.innerHTML =
         '<img width="20" height="20" class="icon" src="icons/trash.svg" alt="icon">'
 
@@ -178,26 +163,26 @@ function createApartmetnItem(item) {
         '<p class="title">' + item.name + '</p>'
 
     let space = document.createElement('div')
-    space.className = 'itemsElement'
+    space.className = 'itemsElement numBlocks nonMobileVisible'
     space.innerHTML =
         '<img width="24" height="24" class="icon" src="icons/space.svg" alt="icon">' +
         '<p class="title">' + item.space + '</p>' +
         '<p class="title">м²</p>'
 
     let city = document.createElement('div')
-    city.className = 'itemsElement'
+    city.className = 'itemsElement cities'
     city.innerHTML =
         // '<img width="24" height="24" class="icon" src="icons/apartment.svg" alt="icon">' +
         '<p class="title">' + item.city + '</p>'
 
     let adult = document.createElement('div')
-    adult.className = 'itemsElement'
+    adult.className = 'itemsElement people nonMobileVisible'
     adult.innerHTML =
         '<img width="24" height="24" class="icon" src="icons/person.svg" alt="icon">' +
         '<p class="title">' + item.adult + ' / ' + item.children + '</p>'
 
     let summary = document.createElement('div')
-    summary.className = 'itemsElement'
+    summary.className = 'itemsElement numBlocks'
     summary.innerHTML =
         '<img width="24" height="24" class="icon" src="icons/money.svg" alt="icon">' +
         '<p class="title">' + item.summary + '</p>' +

@@ -1,0 +1,121 @@
+@media screen and (min-width: 1000px) {
+    .name {
+        width: 35%;
+    }
+
+    .cities{
+        width: 115px;
+    }
+
+    .people {
+        width: 80px;
+    }
+
+    .numBlocks {
+        width: 95px;
+    }
+
+    .generalSeparate {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .mainMenu {
+        width: var(--left-part-wight);
+        display: flex;
+        align-items: center;
+        min-width: 100px;
+    }
+
+    #menuBlock {
+        background: var(--menu-background-color);
+        border-radius: var(--menu-border-radius);
+        margin: var(--small-inset-pxl);
+        padding: var(--primary-paddings);
+        height: 60vh;
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .mainColumnFullContainer {
+        /*margin-top: 5vh;*/
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        /*align-items: center;*/
+        width: 100%;
+    }
+
+    .infoBlock {
+        display: block;
+        background: var(--gray-background-color);
+        border-radius: var(--primary-border-radius);
+        margin-left: 0;
+        margin-right: var(--primary-paddings);
+        padding: var(--primary-paddings);
+    }
+
+    .subtitle {
+        font-family: var(--primary-font-family);
+        font-size: var(--font-size-xx-large);
+        margin: var(--small-inset-pxl);
+    }
+
+    #filters {
+        display: flex;
+        width: var(--main-wight);
+        justify-content: end;
+        align-items: center;
+    }
+
+    #filterSearch, #filterCity {
+        display: flex;
+        padding: var(--primary-paddings);
+    }
+
+    #filterInput, #filterCityInput {
+        width: 15vw;
+        min-width: 150px;
+        border: var(--primary-border-solid);
+        border-radius: var(--primary-border-radius);
+        background: white;
+        padding: 4px;
+        font-size: var(--standart-font-size);
+    }
+
+    .filterButton {
+        font-size: var(--standart-font-size);
+        font-family: var(--primary-font-family);
+        border: var(--primary-border-none-solid);
+        background: var(--primary-button-background-color);
+        color: var(--light-text-color);
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        align-items: center;
+        margin-left: var(--small-margin);
+        border-radius: var(--primary-border-radius);
+        width: 33px;
+        height: 33px;
+    }
+
+    #container {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .apartment {
+        font-family: var(--primary-font-family);
+        width: var(--main-wight);
+        background: var(--gray-background-color);
+        border-radius: var(--primary-border-radius);
+        margin-bottom: var(--small-inset-pxl);
+    }
+
+    .nonMobileVisible {}
+}
