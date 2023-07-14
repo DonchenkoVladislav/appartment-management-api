@@ -1,7 +1,9 @@
 package com.svoi.vkaliningrade.services;
 
 import com.svoi.vkaliningrade.Models.ApartmentDescription;
+import com.svoi.vkaliningrade.Models.ApartmentPhoto;
 import com.svoi.vkaliningrade.Models.Tariff;
+import com.svoi.vkaliningrade.Repo.ApartmentPhotoRepository;
 import com.svoi.vkaliningrade.Repo.ApartmentRepository;
 import com.svoi.vkaliningrade.Repo.TarffRepositiry;
 import com.svoi.vkaliningrade.dto.ApartmentShortInfo;
@@ -9,7 +11,9 @@ import com.svoi.vkaliningrade.dto.ApartmentInfo;
 import com.svoi.vkaliningrade.dto.TariffsInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -25,6 +29,9 @@ public class ApartmentsService {
 
     @Autowired
     private TarffRepositiry tarffRepositiry;
+
+    @Autowired
+    private ApartmentPhotoRepository apartmentPhotoRepository;
 
     //Пример билдера
     private List<ApartmentShortInfo> getAllApartmentShortInfo() {
@@ -198,8 +205,14 @@ public class ApartmentsService {
             tarffRepositiry.save(saveTariff);
         });
 
+        public void saveApartmentPhoto(Long id, MultipartFile file) throws IOException{
 
-
+            byte[] photoBytes = file.getBytes();
+            ApartmentPhoto photo = new ApartmentPhoto();
+            photo.setApartmentId(id);
+            photo.setPhoto(photoBytes);
+            apartmentPhotoRepository.save(photo);
+        }
 
 //        for (int i = 0; i < requestBody.getTariffs().size(); i++) {
 //        }

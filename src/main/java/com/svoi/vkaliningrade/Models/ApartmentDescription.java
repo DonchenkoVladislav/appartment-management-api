@@ -23,9 +23,6 @@ public class ApartmentDescription {
     private String description, view, name, city, coordinates, beds, conveniences, services;
     private int space, adult, children, fromDay, summary;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
-    mappedBy = "apartmentDescription")
-    private List<Image> images = new ArrayList<>();
 
     public ApartmentDescription() {
     }

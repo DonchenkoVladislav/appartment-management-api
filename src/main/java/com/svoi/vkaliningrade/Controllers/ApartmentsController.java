@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -51,6 +52,14 @@ public class ApartmentsController {
     public String edit(@RequestParam(defaultValue = "0") Long id, @RequestBody ApartmentInfo requestBody){
         apartmentsService.edit(id, requestBody);
         return "main";
+    }
+
+    @PostMapping("/save-photo")
+    public String uploadApartmentPhoto(
+            @RequestParam(defaultValue = "0") Long id,
+            @RequestParam("file") MultipartFile file){
+            apartmentsService.saveApartmentPhoto(id, file);
+            return "main";
     }
 
 }
